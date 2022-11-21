@@ -1,4 +1,4 @@
-package src.exFive;
+package Blatt5;
 
 import myUtils.*;
 
