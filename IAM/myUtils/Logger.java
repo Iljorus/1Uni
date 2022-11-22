@@ -47,7 +47,7 @@ public class Logger {
     }
 
     /** 
-     * Prints a {@code String} to the console}
+     * Prints a {@code String} to the console
      * @param input An input String
      * @see toFile()
      * */  
