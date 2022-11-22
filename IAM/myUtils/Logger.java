@@ -9,7 +9,7 @@ public class Logger {
     private String path;
     private File fileOut;
     /** 
-     * Creates the logger with the default path './logs/'
+     * Creates the logger with the default path {@code ./logs/}
      * */ 
     public Logger(){
         this.path=this.DEFAULT_PATH;
