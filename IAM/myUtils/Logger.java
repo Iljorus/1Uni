@@ -5,26 +5,19 @@ import java.time.LocalDate;
 import java.io.*;
 
 public class Logger {
+    private final String DEFAULT_PATH="./logs/";
     private String path;
-    private PrintStream out;
     private File fileOut;
 
     public Logger(){
-        this.out=System.out;
-        this.path="C:/Users/Iljours/Documents/1Uni/IAM/logs/";
+        this.path=this.DEFAULT_PATH;
         this.fileOut=mkFile(getDate());
     }
-    public Logger(PrintStream out){
-        this.out=out;
+    public void reCreateLogger(){
+        this.fileOut=mkFile(this.fileOut.getName());
     }
-    public Logger(String path){
+    public void setPath(String path){
         this.path=path;
-        this.fileOut=mkFile(getDate());
-    }
-    public Logger(PrintStream out, String path){
-        this.out=out;
-        this.path=path;
-        this.fileOut=mkFile(getDate());
     }
     private File mkFile(String name){
         try {
@@ -43,7 +36,7 @@ public class Logger {
 
     public void toConsole(String input){
         input="["+getTime()+"]: "+input;
-        this.out.println(input);
+        System.out.println(input);
     }
     public void toFile(String input){
         input="["+getTime()+"]: "+input;
