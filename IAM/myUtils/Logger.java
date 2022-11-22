@@ -29,8 +29,8 @@ public class Logger {
     private File mkFile(String name){
         try {
             int i=1;
-            File output=new File(this.path+name+"-"+i+".txt");
-            for(;!output.createNewFile();i++)output=new File(this.path+name+"-"+i+".txt");
+            File output=new File(this.path+name+"-"+i+".log");
+            for(;!output.createNewFile();i++)output=new File(this.path+name+"-"+i+".log");
             toConsole("Log created " + output.getName());
             return output;
         }

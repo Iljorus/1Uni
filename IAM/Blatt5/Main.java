@@ -1,15 +1,15 @@
 package Blatt5;
 
 import myUtils.Lambda;
-import myUtils.Logger;
+import java.util.ArrayList;
 
 public class Main{
     public static void main(String[] args) {
         Lambda func = (n) -> {return n*n;};
         func.run(2);
-        Logger log=new Logger();
-        log.toConsole("Console log");
-        log.toFile("File Log");
-        log.toFile("second");
+        ArrayList<Integer> array=new ArrayList<>();
+        array.forEach(s -> System.out.println(s));
+
+        System.out.println();
     }
 }
