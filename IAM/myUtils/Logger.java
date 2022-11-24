@@ -51,20 +51,20 @@ public class Logger {
      * @param input An input String
      * @see toFile()
      * */  
-    public void toConsole(String input){
-        input="["+getTime()+"]: "+input;
-        System.out.println(input);
+    public void toConsole(String x){
+        x="["+getTime()+"]: "+x;
+        System.out.println(x);
     }
     /** 
      * Prints a {@code String} to the file
      * @param input An input String
      * @see toFile
      * */ 
-    public void toFile(String input){
-        input="["+getTime()+"]: "+input;
+    public void toFile(String x){
+        x="["+getTime()+"]: "+x;
         try{
             BufferedWriter fWriter=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileOut, true), "UTF-8"));
-            fWriter.append(input);
+            fWriter.append(x);
             fWriter.newLine();
             fWriter.close();
         }

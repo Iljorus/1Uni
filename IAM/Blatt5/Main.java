@@ -11,7 +11,7 @@ public class Main{
 
         Messurement m =new Messurement();
         m.start();
-        
+
         reference ref=new reference();
         test t= ref::print;
         t.run();

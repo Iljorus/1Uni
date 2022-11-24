@@ -22,7 +22,7 @@ public class Messurement{
         else if(difference>=60E6 && difference<360E6)return difference*1E6+" min";
         else return "Fix your code";
     }
-    public void print(String input){
-       log.toConsole("Process finished in "+input);
+    public void print(String x){
+       log.toConsole("Process finished in "+x);
     }
 }
