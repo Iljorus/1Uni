@@ -3,12 +3,17 @@ package myUtils;
 public class Messurement{
     private long startTime=0;
     private long endTime=0;
-    public Messurement(){}
+    private Logger log;
+    public Messurement(){
+        this.log=new Logger();
+    }
     public void start(){
         this.startTime=System.currentTimeMillis();
+        log.toConsole("Messurment started");
     }
     public void end(){
         this.endTime=System.currentTimeMillis();
+        log.toConsole("Messurment end");
     }
     public String result(){
         long difference=this.endTime-this.startTime;
@@ -18,6 +23,6 @@ public class Messurement{
         else return "Fix your code";
     }
     public void print(String input){
-        System.out.println(input);
+       log.toConsole("Process finished in "+input);
     }
 }
