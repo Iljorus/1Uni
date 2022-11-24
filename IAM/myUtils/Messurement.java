@@ -4,6 +4,9 @@ public class Messurement{
     private long startTime=0;
     private long endTime=0;
     private Logger log;
+    /**
+     * This class provides tools to messure the processing time of the Program
+     */
     public Messurement(){
         this.log=new Logger();
     }

@@ -19,6 +19,6 @@ public class Main{
         Logger log=new Logger();
         log.toConsole("Bruh");
         m.end();
-        m.print(m.result());
+        log.toConsole(m.result());
     }
 }
