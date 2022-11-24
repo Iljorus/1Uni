@@ -20,5 +20,7 @@ public class Main{
         log.toConsole("Bruh");
         m.end();
         log.toConsole(m.result());
+        String[] test={"1", "2"};
+        System.out.println(test.toString().split(""));
     }
 }

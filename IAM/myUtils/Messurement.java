@@ -29,6 +29,7 @@ public class Messurement{
      * @return String
     */
     public String result(){
+        if(this.endTime==0)return "The messurment hasn't ended yet";
         long difference=this.endTime-this.startTime;
         if(difference<1E3)return difference+" ms";
         else if(difference>=1E3 && difference<60E6)return difference*1E3+" sec";
