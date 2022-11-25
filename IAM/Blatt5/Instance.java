@@ -1,5 +1,5 @@
 package Blatt5;
 
-public interface Fi {
+public interface Instance {
     void run();
 }

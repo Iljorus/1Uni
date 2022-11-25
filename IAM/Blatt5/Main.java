@@ -4,7 +4,7 @@ import java.util.object.Object;
 
 public class Main {
     public static void main(String[] args){
-        Fi fi=new Object()::body;
-        fi.run();
+        Instance i=new Object()::body;
+        i.run();
     }
 }
