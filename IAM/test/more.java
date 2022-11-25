@@ -1,4 +1,4 @@
-package Blatt5;
+package test;
 
 class more {
     String str="test";

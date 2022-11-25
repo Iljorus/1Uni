@@ -1,4 +1,4 @@
-package Blatt5;
+package test;
 
 public class reference {
     public void print(){

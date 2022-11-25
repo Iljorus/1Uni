@@ -6,11 +6,11 @@ import myUtils.Logger;
 
 public class Main {
    public static void main(String[] args){
-      Logger log=new Logger();
-      Measurement m=new Measurement();
+      Logger log=new Logger("Main.java");
+      Measurement m=new Measurement(log);
       Locale.setDefault(Locale.US);
       Scanner sc=new Scanner(System.in);
-      log.toConsole("Bitte anzahl an Durchlaufen eingeben");
+      System.out.println("Bitte anzahl an Durchlaufen eingeben");
       int experimentAnzahl=sc.nextInt();
       double torBehalten_M=0;
       double torWechseln_M=0;
@@ -21,8 +21,8 @@ public class Main {
          torWechseln_M+=problem.torWechseln();
       }
       m.end().result();
-      log.toConsole("Trefferwarscheinlichkeit ohne Wechsel: "+torBehalten_M/experimentAnzahl);
-      log.toConsole("Trefferwarscheinlichkeit mit Wechsel: "+torWechseln_M/experimentAnzahl);
+      System.out.println("Trefferwarscheinlichkeit ohne Wechsel: "+torBehalten_M/experimentAnzahl);
+      System.out.println("Trefferwarscheinlichkeit mit Wechsel: "+torWechseln_M/experimentAnzahl);
       sc.close();
    }
 }

@@ -1,4 +1,4 @@
-package Blatt5;
+package test;
 
 public interface test {
     public void run();
