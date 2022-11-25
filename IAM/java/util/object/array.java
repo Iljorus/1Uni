@@ -1,4 +1,4 @@
-package myUtils;
+package java.util.object;
 
 public class array {
     private final int MAX=49;

@@ -28,7 +28,7 @@ public class Measurement{
         return this;
     }
     /** 
-     * Calculates the time between the calling of {@code start} and {@code end}
+     * Calculates the time between {@code start} and {@code end}
     */
     public void result(){
         String result="Processing time ";

@@ -1,11 +1,10 @@
 package Blatt5;
 
-import myUtils.loesung;
+import java.util.object.Object;
 
 public class Main {
     public static void main(String[] args){
-        loesung l=new loesung();
-        Fi fi=l::aufg5;
+        Fi fi=new Object()::body;
         fi.run();
     }
 }

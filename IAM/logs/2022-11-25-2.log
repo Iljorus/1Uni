@@ -1,0 +1,15 @@
+[23:27:06] [myUtils.Logger]: Log created 2022-11-25-2.log
+[23:27:06] [myUtils.loesung]: Bitte leange der Vektors angeben
+[23:27:07] [myUtils.loesung]: User input: 10
+[23:27:07] [myUtils.loesung]: Bitte eine Zahl fuer die Skalarmultiplikation eingeben
+[23:27:08] [myUtils.loesung]: User input: 10
+[23:27:08] [myUtils.Measurement]: Messurment started
+[23:27:08] [myUtils.loesung]: x + y = [43.0 68.0 22.0 52.0 51.0 50.0 36.0 37.0 19.0 20.0 ]
+[23:27:08] [myUtils.loesung]: x - y = [-39.0 8.0 10.0 6.0 31.0 -40.0 -10.0 17.0 -9.0 4.0 ]
+[23:27:08] [myUtils.loesung]: x * y = [82.0 1140.0 96.0 667.0 410.0 225.0 299.0 270.0 70.0 96.0 ]
+[23:27:08] [myUtils.loesung]: x / y = [0.04878048780487805 1.2666666666666666 2.6666666666666665 1.2608695652173914 4.1 0.1111111111111111 0.5652173913043478 2.7 0.35714285714285715 1.5 ]
+[23:27:08] [myUtils.loesung]: x * l = [20.0 380.0 160.0 290.0 410.0 50.0 130.0 270.0 50.0 120.0 ]
+[23:27:08] [myUtils.loesung]: y * l = [410.0 300.0 60.0 230.0 100.0 450.0 230.0 100.0 140.0 80.0 ]
+[23:27:08] [myUtils.loesung]: x @ y = 3355
+[23:27:08] [myUtils.Measurement]: Messurment end
+[23:27:08] [myUtils.Measurement]: Processing time 7 ms

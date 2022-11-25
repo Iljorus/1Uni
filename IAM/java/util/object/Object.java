@@ -1,10 +1,14 @@
-package myUtils;
+package java.util.object;
 
 import java.util.Scanner;
+
+import myUtils.Logger;
+import myUtils.Measurement;
+
 import java.util.Locale;
 
-public class loesung {
-    public void aufg5(){
+public class Object {
+    public void body(){
         Logger log=new Logger(String.valueOf(this.getClass()).split(" ")[1]);
         Measurement m=new Measurement(log);
         Locale.setDefault(Locale.US);
@@ -13,8 +17,8 @@ public class loesung {
         int n=sc.nextInt();
         double[] x=new double[n];
         double[] y=new double[n];
-        log.log("User input: "+n);
-        log.toFile("Bitte eine Zahl fuer die Skalarmultiplikation eingeben");
+        log.toFile("User input: "+n);
+        log.log("Bitte eine Zahl fuer die Skalarmultiplikation eingeben");
         int l=sc.nextInt();
         log.toFile("User input: "+l);
         m.start();
