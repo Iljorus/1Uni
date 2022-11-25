@@ -26,6 +26,10 @@ public class Logger {
     public Logger(String s, boolean file){
         this.source=s;
     }
+    public Logger(String s, File f){
+        this.source=s;
+        this.fileOut=f;
+    }
     public void reCreateLogger(){
         mkFile(this.fileOut.getName());
     }
@@ -34,6 +38,9 @@ public class Logger {
      * */ 
     public void setPath(String path){
         this.path=path;
+    }
+    public void setFile(File fileOut){
+        this.fileOut=fileOut;
     }
     /**
      * Creates a new file at the pre-determined path
@@ -44,7 +51,7 @@ public class Logger {
      */
     private void mkFile(String name){
         String origin=this.source;
-        this.source="Logger.java";
+        this.source=String.valueOf(this.getClass()).split(" ")[1];
         try {
             int i=1;
             File output=new File(this.path+name+"-"+i+".log");
@@ -115,6 +122,9 @@ public class Logger {
             return "["+this.source+"]: ";
         }
         return this.source;
+    }
+    public File getFile(){
+        return this.fileOut;
     }
     /**
      * Fetches the current time

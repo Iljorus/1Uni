@@ -9,8 +9,7 @@ public class Measurement{
      * @param log {@code Logger} to write to
      */
     public Measurement(Logger log){
-        this.log=log;
-        this.log.setSource("Measurement.java");
+        this.log=new Logger(String.valueOf(this.getClass()).split(" ")[1], log.getFile());
     }
     /** 
      * Starts the messurment
@@ -38,7 +37,7 @@ public class Measurement{
         if(difference<1E3)result+=difference+" ms";
         else if(difference>=1E3 && difference<60E6)result+=difference*1E-3+" sec";
         else if(difference>=60E6 && difference<360E6)result+=difference*1E-6+" min";
-        else result= "Fix your code";
+        else result= "Processing took too long. FIX YOUR CODE!!";
         log.log(result);
     }
 }

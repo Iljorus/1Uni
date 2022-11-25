@@ -18,8 +18,7 @@ public class Main{
         t.run();
 
         m.end().result();
-
-
+        
         more mo=new more();
         System.out.println(mo.second().first().str.toString());
     }

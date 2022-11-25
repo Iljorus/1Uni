@@ -1,5 +1,5 @@
 package Blatt5;
 
-public interface keinProblem {
+public interface Fi {
     void run();
 }

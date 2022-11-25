@@ -1,4 +1,4 @@
-package Blatt5;
+package myUtils;
 
 public class array {
     private final int MAX=49;
@@ -31,7 +31,7 @@ public class array {
         int j=0;
         for(int i=0;i<a.length;i++){
             if(a[i]==0 || b[i]==0)j++;
-            result[i]=a[i]/b[i];
+            else result[i]=a[i]/b[i];
         }
         if(j!=0){
             result=null;
