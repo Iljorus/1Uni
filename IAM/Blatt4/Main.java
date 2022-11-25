@@ -1,14 +1,16 @@
 package Blatt4;
 
 import java.util.*;
-import myUtils.Messurement;
+import myUtils.Measurement;
+import myUtils.Logger;
 
 public class Main {
    public static void main(String[] args){
-      Messurement m=new Messurement();
+      Logger log=new Logger();
+      Measurement m=new Measurement();
       Locale.setDefault(Locale.US);
       Scanner sc=new Scanner(System.in);
-      System.out.println("Bitte anzahl an Durchlaufen eingeben:");
+      log.toConsole("Bitte anzahl an Durchlaufen eingeben");
       int experimentAnzahl=sc.nextInt();
       double torBehalten_M=0;
       double torWechseln_M=0;
@@ -18,10 +20,9 @@ public class Main {
          torBehalten_M+=problem.torBehalten();
          torWechseln_M+=problem.torWechseln();
       }
-      m.end();
-      System.out.println("\nTrefferwarscheinlichkeit ohne Wechsel: "+torBehalten_M/experimentAnzahl);
-      System.out.println("Trefferwarscheinlichkeit mit Wechsel: "+torWechseln_M/experimentAnzahl);
-      System.out.println("\nVerarbeitungszeit: "+m.result());
+      m.end().result();
+      log.toConsole("Trefferwarscheinlichkeit ohne Wechsel: "+torBehalten_M/experimentAnzahl);
+      log.toConsole("Trefferwarscheinlichkeit mit Wechsel: "+torWechseln_M/experimentAnzahl);
       sc.close();
    }
 }

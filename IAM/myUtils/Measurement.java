@@ -1,13 +1,13 @@
 package myUtils;
 
-public class Messurement{
+public class Measurement{
     private long startTime=0;
     private long endTime=0;
     private Logger log;
     /**
      * This class provides tools to messure the processing time of the Program
      */
-    public Messurement(){
+    public Measurement(){
         this.log=new Logger();
     }
     /** 
@@ -20,20 +20,23 @@ public class Messurement{
     /**
      * Ends the messurment
      */
-    public void end(){
+    public Measurement end(){
         this.endTime=System.currentTimeMillis();
         log.toConsole("Messurment end");
+        return this;
     }
     /** 
      * Calculates the time between {@code start} and {@code end}
      * @return String
     */
-    public String result(){
-        if(this.endTime==0)return "The messurment hasn't ended yet";
+    public void result(){
+        String result="Processing time ";
+        if(this.endTime==0)result="The messurment hasn't ended yet";
         long difference=this.endTime-this.startTime;
-        if(difference<1E3)return difference+" ms";
-        else if(difference>=1E3 && difference<60E6)return difference*1E3+" sec";
-        else if(difference>=60E6 && difference<360E6)return difference*1E6+" min";
-        else return "Fix your code";
+        if(difference<1E3)result+=difference+" ms";
+        else if(difference>=1E3 && difference<60E6)result+=difference*1E3+" sec";
+        else if(difference>=60E6 && difference<360E6)result+=difference*1E6+" min";
+        else result= "Fix your code";
+        log.toConsole(result);
     }
 }

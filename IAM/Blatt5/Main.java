@@ -2,25 +2,24 @@ package Blatt5;
 
 import myUtils.Lambda;
 import myUtils.Logger;
-import myUtils.Messurement;
+import myUtils.Measurement;
 
 public class Main{
     public static void main(String[] args) {
         Lambda func = (n) -> {return n*n;};
         func.run(2);
 
-        Messurement m =new Messurement();
+        Measurement m =new Measurement();
         m.start();
 
         reference ref=new reference();
         test t= ref::print;
         t.run();
 
-        Logger log=new Logger();
-        log.toConsole("Bruh");
-        m.end();
-        log.toConsole(m.result());
-        String[] test={"1", "2"};
-        System.out.println(test.toString().split(""));
+        m.end().result();
+
+        more mo=new more();
+        System.out.println(mo.second().first().str.toString());
+        "test".toString().replace("", "").toCharArray();
     }
 }

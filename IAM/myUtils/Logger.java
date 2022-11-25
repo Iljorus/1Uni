@@ -15,6 +15,8 @@ public class Logger {
         this.path=this.DEFAULT_PATH;
         this.fileOut=mkFile(getDate());
     }
+    public Logger(boolean file){
+    }
     public void reCreateLogger(){
         this.fileOut=mkFile(this.fileOut.getName());
     }
@@ -36,7 +38,7 @@ public class Logger {
             int i=1;
             File output=new File(this.path+name+"-"+i+".log");
             for(;!output.createNewFile();i++)output=new File(this.path+name+"-"+i+".log");
-            toConsole("Log created " + output.getName());
+            if(output!=null)toConsole("Log created " + output.getName());
             return output;
         }
         catch (IOException e) {
@@ -61,6 +63,7 @@ public class Logger {
      * @see toFile
      * */ 
     public void toFile(String x){
+        if(this.fileOut==null)return;
         x="["+getTime()+"]: "+x;
         try{
             BufferedWriter fWriter=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileOut, true), "UTF-8"));
@@ -72,6 +75,16 @@ public class Logger {
             e.printStackTrace();
         }
     }
+    public void log(String x){
+        toConsole(x);
+        if(this.fileOut !=null)toFile(x);
+    }
+
+
+
+
+
+
     /**
      * Fetches the current time
      * @return {@code String} HH:mm:ss
