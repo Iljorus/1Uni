@@ -40,23 +40,16 @@ public class Object {
             y=ar.toArray(yIn);
         }
         m.start();
-        double[] XaddY=ar.add(x, y);
-        double[] XsubY=ar.sub(x, y);
-        double[] XmulY=ar.mult(x, y);
-        double[] XdivY=ar.div(x, y);
-        double[] XskalarMult=ar.skalarMult(x, l);
-        double[] YskalarMult=ar.skalarMult(y, l);
-        int XskalarProdY=ar.skalarProd(x, y);
-        log.log("x = "+ar.toChar(x));
-        log.log("y = "+ar.toChar(y));
-        log.log("x + y = "+ar.toChar(XaddY));
-        log.log("x - y = "+ar.toChar(XsubY));
-        log.log("x * y = "+ar.toChar(XmulY));
-        if(XdivY==null)log.log("x / y = Fehler einer der Divisoren ist 0");
-        else log.log("x / y = "+ar.toChar(XdivY));
-        log.log("x * l = "+ar.toChar(XskalarMult));
-        log.log("y * l = "+ar.toChar(YskalarMult));
-        log.log("x @ y = "+XskalarProdY);
+        log.log("x = "+ar.setResult(x).toString());
+        log.log("y = "+ar.setResult(y).toString());
+        log.log("x + y = "+ar.add(x, y).toString());
+        log.log("x - y = "+ar.sub(x, y).toString());
+        log.log("x * y = "+ar.mult(x, y).toString());
+        if(ar.div(x, y).getResult()==null)log.log("x / y = Fehler einer der Divisoren ist 0");
+        else log.log("x / y = "+ar.div(x, y).toString());
+        log.log("x * l = "+ar.skalarMult(x, l).toString());
+        log.log("y * l = "+ar.skalarMult(x, l).toString());
+        log.log("x @ y = "+String.valueOf(ar.skalarProd(x, y)));
         sc.close();
         m.end().result();
     }
