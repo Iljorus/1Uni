@@ -1,4 +1,4 @@
-package java.util.object;
+package a5;
 
 public class array {
     private final int MAX=49;
@@ -7,63 +7,53 @@ public class array {
     }
     public double[] add(double[] a, double[] b){
         double[] result=new double[a.length];
-        for(int i=0;i<a.length;i++){
-            result[i]=a[i]+b[i];
-        }
+        for(int i=0;i<a.length;i++)result[i]=a[i]+b[i];
         return result;
     }
     public double[] sub(double[] a, double[] b){
         double[] result=new double[a.length];
-        for(int i=0;i<a.length;i++){
-            result[i]=a[i]-b[i];
-        }
+        for(int i=0;i<a.length;i++)result[i]=a[i]-b[i];
         return result;
     }
     public double[] mult(double[] a, double[] b){   
         double[] result=new double[a.length];
-        for(int i=0;i<a.length;i++){
-            result[i]=a[i]*b[i];
-        }
+        for(int i=0;i<a.length;i++)result[i]=a[i]*b[i];
         return result;
     }
     public double[] div(double[] a, double[] b){
         double[] result=new double[a.length];
         int j=0;
         for(int i=0;i<a.length;i++){
-            if(a[i]==0 || b[i]==0)j++;
+            if(a[i]==0.0 || b[i]==0.0)j++;
             else result[i]=a[i]/b[i];
         }
-        if(j!=0){
-            result=null;
-        }
+        if(j!=0)result=null;
         return result;
     }
     public double[] skalarMult(double[] a, int b){
         double[] result=new double[a.length];
-        for(int i=0;i<a.length;i++){
-            result[i]=a[i]*b;
-        }
+        for(int i=0;i<a.length;i++)result[i]=a[i]*b;
         return result;
     }
     public int skalarProd(double[] a, double[] b){
         int result=0;
-        for(int i=0;i<a.length;i++){
-            result+=a[i]*b[i];
-        }
+        for(int i=0;i<a.length;i++)result+=a[i]*b[i];
         return result;
     }
     public double[] fill(int i){
         double[] k=new double[i];
-        for(int j=0;j<k.length;j++){
-            k[j]=(int)(MIN+(MAX-MIN)*Math.random());
-        }
+        for(int j=0;j<k.length;j++)k[j]=(int)(MIN+(MAX-MIN)*Math.random());
         return k;
     }
     public String toChar(double[] k){
         String result="[";
-        for(int i=0;i<k.length;i++){
-            result+=String.valueOf(k[i])+" ";
-        }
-        return result+"]";
+        for(int i=0;i<k.length-1;i++)result+=String.valueOf(k[i])+" ";
+        return result+String.valueOf(k[k.length-1])+"]";
+    }
+    public double[] toArray(String input){
+        String[] numbers=input.split(", ");
+        double[] output=new double[numbers.length];
+        for(int i=0;i<numbers.length;i++)output[i]=Integer.valueOf(numbers[i]);
+        return output;
     }
 }
