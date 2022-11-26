@@ -1,7 +1,0 @@
-[20:33:12] [myUtils.Logger]: Log created 2022-11-26-4.log
-[20:33:12] [a5.Object]: Bitte leange der Vektoren angeben
-[20:33:16] [a5.Object]: User input: 10
-[20:33:16] [a5.Object]: Bitte eine Zahl fuer die Skalarmultiplikation eingeben
-[20:33:17] [a5.Object]: User input: 10
-[20:33:17] [a5.Object]: Zufaellige zahlen? Y/N
-[20:33:19] [myUtils.Measurement]: Messurment started

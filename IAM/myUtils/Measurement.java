@@ -16,7 +16,7 @@ public class Measurement{
     */
     public void start(){
         this.startTime=System.currentTimeMillis();
-        log.log("Messurment started");
+        log.toFile("Messurment started");
     }
     /**
      * Ends the messurment
@@ -24,7 +24,7 @@ public class Measurement{
      */
     public Measurement end(){
         this.endTime=System.currentTimeMillis();
-        log.log("Messurment end");
+        log.toFile("Messurment end");
         return this;
     }
     /** 
@@ -38,6 +38,6 @@ public class Measurement{
         else if(difference>=1E3 && difference<60E6)result+=difference*1E-3+" sec";
         else if(difference>=60E6 && difference<360E6)result+=difference*1E-6+" min";
         else result= "Processing took too long. FIX YOUR CODE!!";
-        log.log(result);
+        log.toFile(result);
     }
 }

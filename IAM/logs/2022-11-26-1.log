@@ -1,2 +1,18 @@
-[17:47:08] [myUtils.Logger]: Log created 2022-11-26-1.log
-[17:47:08] [a5.Object]: Bitte leange der Vektoren angeben
+[20:42:15] [myUtils.Logger]: Log created 2022-11-26-1.log
+[20:42:15] [a5.Object]: Bitte leange der Vektoren angeben
+[20:42:18] [a5.Object]: User input: 10
+[20:42:18] [a5.Object]: Bitte eine Zahl fuer die Skalarmultiplikation eingeben
+[20:42:19] [a5.Object]: User input: 10
+[20:42:19] [a5.Object]: Zufaellige zahlen? Y/N
+[20:42:20] [myUtils.Measurement]: Messurment started
+[20:42:20] [a5.Object]: x = [14.0 10.0 5.0 12.0 21.0 29.0 16.0 46.0 34.0 2.0]
+[20:42:20] [a5.Object]: y = [37.0 46.0 13.0 36.0 19.0 38.0 47.0 27.0 27.0 35.0]
+[20:42:20] [a5.Object]: x + y = [51.0 56.0 18.0 48.0 40.0 67.0 63.0 73.0 61.0 37.0]
+[20:42:20] [a5.Object]: x - y = [-23.0 -36.0 -8.0 -24.0 2.0 -9.0 -31.0 19.0 7.0 -33.0]
+[20:42:20] [a5.Object]: x * y = [518.0 460.0 65.0 432.0 399.0 1102.0 752.0 1242.0 918.0 70.0]
+[20:42:20] [a5.Object]: x / y = [0.3783783783783784 0.21739130434782608 0.38461538461538464 0.3333333333333333 1.105263157894737 0.7631578947368421 0.3404255319148936 1.7037037037037037 1.2592592592592593 0.05714285714285714]
+[20:42:20] [a5.Object]: x * l = [140.0 100.0 50.0 120.0 210.0 290.0 160.0 460.0 340.0 20.0]
+[20:42:20] [a5.Object]: y * l = [140.0 100.0 50.0 120.0 210.0 290.0 160.0 460.0 340.0 20.0]
+[20:42:20] [a5.Object]: x @ y = 5958
+[20:42:20] [myUtils.Measurement]: Messurment end
+[20:42:20] [myUtils.Measurement]: Processing time 7 ms

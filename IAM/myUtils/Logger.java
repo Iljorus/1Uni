@@ -104,8 +104,13 @@ public class Logger {
      */
     public void log(String x){
         toConsole(x);
-        if(this.fileOut !=null)toFile(x);
+        toFile(x);
     }
+    public void logAndDefault(String x){
+        System.out.println(x);
+        toFile(x);
+    }
+
     /**
      * 
      * @param s {@code String} new Source
