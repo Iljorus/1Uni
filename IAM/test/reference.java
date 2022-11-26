@@ -1,7 +1,8 @@
 package test;
 
-public class reference {
-    public void print(){
-        System.out.println("This is a reference Class");
+public class reference<T> {
+    public T body(T t){
+        System.out.println(t);
+        return t;
     }
 }

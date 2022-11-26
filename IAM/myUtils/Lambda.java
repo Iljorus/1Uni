@@ -1,5 +1,5 @@
 package myUtils;
 
-public interface Lambda {
-    int run(int i);
+public interface Lambda<T> {
+    T run(T t);
 }
