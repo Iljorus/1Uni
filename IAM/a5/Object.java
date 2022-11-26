@@ -1,11 +1,10 @@
 package a5;
 
 import java.util.Scanner;
+import java.util.Locale;
 
 import myUtils.Logger;
 import myUtils.Measurement;
-
-import java.util.Locale;
 
 public class Object {
     public void body(){
@@ -40,6 +39,7 @@ public class Object {
             y=ar.toArray(yIn);
         }
         m.start();
+        System.out.println("");
         log.logAndDefault("x = "+ar.setResult(x).toString());
         log.logAndDefault("y = "+ar.setResult(y).toString());
         log.logAndDefault("x + y = "+ar.add(x, y).toString());

@@ -9,8 +9,8 @@ public class Main<T> {
     }
     public void acc(T input){
         Consumer<T> c=(t) -> {
-        Instance i=new Object()::body;
-        i.run();
+            Instance i=new Object()::body;
+            i.run();
         };
         c.accept(input);
     }
