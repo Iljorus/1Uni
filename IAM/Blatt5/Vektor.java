@@ -1,4 +1,4 @@
-package a5;
+package Blatt5;
 
 import java.util.Scanner;
 import java.util.Locale;
@@ -6,9 +6,11 @@ import java.util.Locale;
 import myUtils.Logger;
 import myUtils.Measurement;
 
-public class Object {
-    public void body(){
-        
+public class Vektor {
+    public Vektor(){
+        vektor();
+    }
+    public void vektor(){
         Logger log=new Logger(String.valueOf(this.getClass()).split(" ")[1]);
         Measurement m=new Measurement(log);
         Locale.setDefault(Locale.US);

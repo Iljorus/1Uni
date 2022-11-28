@@ -1,4 +1,4 @@
-package a5;
+package Blatt5;
 
 public class array {
     private final int MAX=49;

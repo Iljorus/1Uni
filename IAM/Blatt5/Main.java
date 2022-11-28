@@ -1,17 +1,9 @@
 package Blatt5;
 
-import a5.Object;
-import java.util.function.Consumer;;
-
 public class Main<T> {
     public static void main(String[] args){
-        new Main<String>().acc("run");
-    }
-    public void acc(T input){
-        Consumer<T> c=(t) -> {
-            Instance i=new Object()::body;
-            i.run();
-        };
-        c.accept(input);
+        new Vektor();
     }
 }
+
+//A2E = 10*256+2*16+14*1=2560+32+14=2606
