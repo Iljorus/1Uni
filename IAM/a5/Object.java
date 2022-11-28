@@ -48,7 +48,7 @@ public class Object {
         if(ar.div(x, y).getResult()==null)log.logAndDefault("x / y = Fehler einer der Divisoren ist 0");
         else log.logAndDefault("x / y = "+ar.div(x, y).toString());
         log.logAndDefault("x * l = "+ar.skalarMult(x, l).toString());
-        log.logAndDefault("y * l = "+ar.skalarMult(x, l).toString());
+        log.logAndDefault("y * l = "+ar.skalarMult(y, l).toString());
         log.logAndDefault("x @ y = "+String.valueOf(ar.skalarProd(x, y)));
         sc.close();
         m.end().result();
