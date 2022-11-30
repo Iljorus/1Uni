@@ -1,8 +1,8 @@
 package myUtils;
 
 public class cInt {
-    public int rPart=0;
-    public int iPart=0;
+    private int rPart=0;
+    private int iPart=0;
     public String val="0+0i";
     /**
      * Creates a new complex number
@@ -19,6 +19,12 @@ public class cInt {
      */
     public String getNum(){     //Deprecated
         return this.rPart+((this.iPart<0)?"":"+")+this.iPart+"i";
+    }
+    public int getR(){
+        return this.rPart;
+    }
+    public int getI(){
+        return this.iPart;
     }
     public cInt setVal(int r, int i){
         this.rPart=r;
