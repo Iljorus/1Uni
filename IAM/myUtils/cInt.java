@@ -27,4 +27,11 @@ public class cInt {
         this.iPart=iCache;
         return this;
     }
+    public cInt div(cInt x){
+        int rCache=((this.rPart*x.rPart)+(this.iPart*x.iPart))/((int)Math.pow(x.rPart, 2)+(int)Math.pow(x.iPart, 2));
+        int iCache=((x.rPart*this.iPart)-(this.rPart*x.iPart))/((int)Math.pow(x.rPart, 2)+(int)Math.pow(x.iPart, 2));
+        this.rPart=rCache;
+        this.iPart=iCache;
+        return this;
+    }
 }
