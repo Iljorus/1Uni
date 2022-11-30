@@ -1,12 +1,15 @@
 package Blatt6;
 
-import myUtils.Numbers;
+import myUtils.*;
 
 public class Main {
     public static void main(String[] args){
-        Numbers num=new Numbers();
-        System.out.println(num.toDecimal("1001001", 2));
-        System.out.println(num.toDecimal("A2E", 16));
-        //System.out.println(num.toDecimal("19aB", 19872));   //Integer overflow
+    cInt a=new cInt(1, 1);
+    cInt b=new cInt(1, 2);
+    System.out.println(a.add(b).getNum());
+    System.out.println(a.mult(b).getNum());
+    System.out.println(a.sub(b).getNum());
+    System.out.println(a.sub(b).getNum());
+    System.out.println(a.sub(b).getNum());
     }
 }
