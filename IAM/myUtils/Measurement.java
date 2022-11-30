@@ -20,7 +20,7 @@ public class Measurement{
     }
     /**
      * Ends the messurment
-     * @return Messurment
+     * @return Messurment {@code this}
      */
     public Measurement end(){
         this.endTime=System.currentTimeMillis();
@@ -28,7 +28,7 @@ public class Measurement{
         return this;
     }
     /** 
-     * Calculates the time between {@code start} and {@code end}
+     * Time between {@code start} and {@code end}
     */
     public void result(){
         String result="Processing time ";

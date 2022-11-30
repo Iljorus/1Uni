@@ -27,24 +27,25 @@ public class Numbers {      //Mby rename
         else if(x.equals("15"))return "F";
         else return String.valueOf(x);
     }
-    public String toTarget(String s, int x, int y){
+    /**
+     * Converts a number base {@code x} into base {@code y}
+     * @param s {@code String} Number
+     * @param x {@code int} Base of input
+     * @param y {@code int} Base of output
+     * @return {@code String} Converted number
+     */
+    public String convert(String s, int x, int y){
         if(y==16){
             String result="";
             int num=Integer.valueOf(toDecimal(s, x));
-            int length=String.valueOf(num).split("").length;
-            for(int i=length-1;i>=0;i--){
+            for(int i=String.valueOf(num).length()-1;i>=0;i--){
                 result+=conNum(String.valueOf(num%16));
                 num/=16;
             }
             String[] copy=result.split("");
             String[] cache=new String[copy.length];
-            for(int i=copy.length-1;i>=0;i--){
-                if(copy[i].equals("0"))cache[(copy.length-1)-i]="";
-                else cache[(copy.length-1)-i]=copy[i];
-            }
-            result="";
-            for(String str:cache)result+=str;
-            return result;
+            for(int i=copy.length-1;i>=0;i--)cache[(copy.length-1)-i]=(cache[i].equals("0"))?"":copy[i];
+            return String.join("",cache);
         }
         else{
             int result=0;
