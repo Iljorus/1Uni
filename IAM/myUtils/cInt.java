@@ -10,7 +10,7 @@ public class cInt {
      * @param i Imaginary part of the complex number as {@code int}
      */
     public cInt(int r, int i){
-        this.rPart=r;
+        this.rPart=r;   //YOOOOOO
         this.iPart=i;
         updateVal();
     }
@@ -20,18 +20,33 @@ public class cInt {
     public String getNum(){     //Deprecated
         return this.rPart+((this.iPart<0)?"":"+")+this.iPart+"i";
     }
+    /**
+     * @return int {@code Real} part
+     */
     public int getR(){
         return this.rPart;
     }
+    /**
+     * @return int {@code Imaginary} part
+     */
     public int getI(){
         return this.iPart;
     }
+    /**
+     * Set new value
+     * @param r {@code Real} part
+     * @param i {@code Imaginary} part
+     * @return cInt {@code this}
+     */
     public cInt setVal(int r, int i){
         this.rPart=r;
         this.iPart=i;
         updateVal();
         return this;
     }
+    /**
+     * updates String representation
+     */
     private void updateVal(){
         this.val=this.rPart+((this.iPart<0)?"":"+")+this.iPart+"i";
     }
@@ -67,8 +82,8 @@ public class cInt {
         int iCache=(this.rPart*x.iPart)+(x.rPart*this.iPart);
         this.rPart=rCache;
         this.iPart=iCache;
-        updateVal();
-        return this;
+        updateVal();  
+        return this;  
     }
     /**
      * Divides {@code this} with {@code x} 
