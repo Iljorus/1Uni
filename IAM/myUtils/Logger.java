@@ -64,7 +64,7 @@ public class Logger {
             return;
         }
         catch (IOException e) {
-            toConsole("An error occurred.");
+            console("An error occurred.");
             e.printStackTrace();
             this.fileOut=null;
             this.source=origin;
@@ -76,7 +76,7 @@ public class Logger {
      * @param input An input String
      * @see toFile()
      * */  
-    public void toConsole(String x){
+    public void console(String x){
         x="["+getTime()+"] "+getSource(true)+x;
         System.out.println(x);
     }
@@ -85,7 +85,7 @@ public class Logger {
      * @param input An input String
      * @see toFile
      * */ 
-    public void toFile(String x){
+    public void file(String x){
         if(this.fileOut==null)return;
         x="["+getTime()+"] "+getSource(true)+x;
         try{
@@ -103,12 +103,12 @@ public class Logger {
      * @param x {@code String} input
      */
     public void log(String x){
-        toConsole(x);
-        toFile(x);
+        console(x);
+        file(x);
     }
     public void logAndDefault(String x){
         System.out.println(x);
-        toFile(x);
+        file(x);
     }
 
     /**
