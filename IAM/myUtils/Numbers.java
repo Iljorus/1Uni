@@ -1,6 +1,7 @@
 package myUtils;
 
-public class Numbers {      //Mby rename 
+public class Numbers {      //Mby rename
+    private final String NUMERALS="0123456789ABCDEF";
     public Numbers(){
     }
     private String toDecimal(String x, int s){
@@ -16,12 +17,10 @@ public class Numbers {      //Mby rename
         return s.matches("[0-9]");
     }
     private int hexValue(String x){
-        return "0123456789ABCDEF".indexOf(x);
+        return NUMERALS.indexOf(x);
     }
     private String toHex(String x){
-        String values="0123456789ABCDEF";   //GHIJKLMNOPQRSTUVWXYZ
-        if(Integer.valueOf(x)>=values.length())return "error";
-        return String.valueOf(values.charAt(Integer.valueOf(x)));
+        return String.valueOf(NUMERALS.charAt(Integer.valueOf(x)));
     }
     /**
      * Converts a number base {@code x} into base {@code y}
@@ -48,7 +47,7 @@ public class Numbers {      //Mby rename
                 cache[(copy.length-1)-i]=copy[i];
             }
         }
-        return String.join("",cache);
+        return String.join("",cache)+" :B"+y;
     }
     private boolean isValid(String s, int x){
         if(x<1 || s.equals("null"))return false;
