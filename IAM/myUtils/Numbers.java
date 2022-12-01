@@ -2,6 +2,9 @@ package myUtils;
 
 public class Numbers {      //Mby rename
     private final String NUMERALS="0123456789ABCDEF";
+    /**
+     * This class provides tools to convert numbers
+     */
     public Numbers(){
     }
     private String toDecimal(String x, int s){
