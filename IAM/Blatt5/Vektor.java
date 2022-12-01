@@ -19,10 +19,10 @@ public class Vektor {
         int n=sc.nextInt();
         double[] x=new double[n];
         double[] y=new double[n];
-        log.toFile("User input: "+n);
+        log.file("User input: "+n);
         log.logAndDefault("Bitte eine Zahl fuer die Skalarmultiplikation eingeben");
         int l=sc.nextInt();
-        log.toFile("User input: "+l);
+        log.file("User input: "+l);
         array ar=new array();
         log.logAndDefault("Zufaellige zahlen? Y/N");
         if(sc.next().equalsIgnoreCase("Y")){
@@ -33,11 +33,11 @@ public class Vektor {
             log.logAndDefault("Bitte "+n+" Zahlen der form a, b, c, ... fuer Vektor x eigeben");
             sc.nextLine();
             String xIn=String.valueOf(sc.nextLine());
-            log.toFile("User input: "+xIn);
+            log.file("User input: "+xIn);
             x=ar.toArray(xIn);
             log.logAndDefault("Bitte "+n+" Zahlen der form a, b, c, ... fuer Vektor y eigeben");
             String yIn=sc.nextLine();
-            log.toFile("User input: "+yIn);
+            log.file("User input: "+yIn);
             y=ar.toArray(yIn);
         }
         m.start();
