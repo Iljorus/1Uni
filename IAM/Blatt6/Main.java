@@ -8,5 +8,6 @@ public class Main {
         System.out.println(num.convert("A2E", 16, 2));
         System.out.println(num.convert("101000101110", 2, 10));
         System.out.println(num.convert("14", 10, 16));
+
     }
 }
