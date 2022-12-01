@@ -6,7 +6,7 @@ import myUtils.Logger;
 
 public class Main {
    public static void main(String[] args){
-      Logger log=new Logger("Blatt4.Main.java", false);
+      Logger log=new Logger("Blatt4.Main.java");
       Measurement m=new Measurement(log);
       Locale.setDefault(Locale.US);
       Scanner sc=new Scanner(System.in);
