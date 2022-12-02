@@ -19,19 +19,18 @@ public class Hornerschema {
             System.out.println("Geben sie den "+(this.koeffizienten.length-i)+"-ten Koeffizienten an");
             koeffizienten[i]=Double.valueOf(sc.next());
         }
-        printP();
-        System.out.println("Geben sie eine Stelle \"x\" zur berechnung des Horner-Schemas ein");
         sc.nextLine();
+
+        printP();
+        System.out.println("\nSie koennen nun wiederholt werte in das Horner-Shema eingeben.\nZum beenden \"exit\" eingeben");
         while(true){
             String input=sc.nextLine();
             if(input.equalsIgnoreCase("exit"))break;
             else if(input.matches("-?[0-9]*")){
                 double[] result=calcHorner(Double.valueOf(input));
-                System.out.println(result[0]+" "+result[1]);
+                System.out.println("f(x)="+result[0]+"\tf'(x)="+result[1]);
             }
-            else {
-                System.out.println("Invaid input. Please make sure your input is correct");
-            }
+            else System.out.println("Invalide Eingabe. Bitte erneut versuchen");
         }
         sc.close();
     }
@@ -53,10 +52,10 @@ public class Hornerschema {
         return result;
     }
     public void printP(){
-        String result="";
-        for(int i=this.grad;i>=0;i--){
-            result+=this.koeffizienten[i]+"x"+i+" ";
+        String result="Eingegebenes Polynom: ";
+        for(int i=this.grad;i>0;i--){
+            result+=this.koeffizienten[i]+"x^("+i+") + ";
         }
-        System.out.println(result);
+        System.out.println(result+this.koeffizienten[0]+"x^(0)");
     }
 }
