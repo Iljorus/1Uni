@@ -1,0 +1,22 @@
+[15:55:04] [myUtils.Logger]: Log created 2022-12-02-2.log
+[15:55:04] [Blatt5.Vektor]: Bitte leange der Vektoren angeben
+[15:55:08] [Blatt5.Vektor]: User input: 10
+[15:55:08] [Blatt5.Vektor]: Bitte eine Zahl fuer die Skalarmultiplikation eingeben
+[15:55:09] [Blatt5.Vektor]: User input: 5
+[15:55:09] [Blatt5.Vektor]: Zufaellige zahlen? Y/N
+[15:55:10] [Blatt5.Vektor]: Bitte 10 Zahlen der form a, b, c, ... fuer Vektor x eigeben
+[15:55:18] [Blatt5.Vektor]: User input: 1, 2, 3
+[15:55:18] [Blatt5.Vektor]: Bitte 10 Zahlen der form a, b, c, ... fuer Vektor y eigeben
+[15:55:20] [Blatt5.Vektor]: User input: 4, 5, 6
+[15:55:20] [myUtils.Measurement]: Messurment started
+[15:55:20] [Blatt5.Vektor]: x = [1.0 2.0 3.0]
+[15:55:20] [Blatt5.Vektor]: y = [4.0 5.0 6.0]
+[15:55:20] [Blatt5.Vektor]: x + y = [5.0 7.0 9.0]
+[15:55:20] [Blatt5.Vektor]: x - y = [-3.0 -3.0 -3.0]
+[15:55:20] [Blatt5.Vektor]: x * y = [4.0 10.0 18.0]
+[15:55:20] [Blatt5.Vektor]: x / y = [0.25 0.4 0.5]
+[15:55:20] [Blatt5.Vektor]: x * l = [5.0 10.0 15.0]
+[15:55:20] [Blatt5.Vektor]: y * l = [20.0 25.0 30.0]
+[15:55:20] [Blatt5.Vektor]: x @ y = 32
+[15:55:20] [myUtils.Measurement]: Messurment end
+[15:55:20] [myUtils.Measurement]: Processing time 24 ms

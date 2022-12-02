@@ -1,6 +1,6 @@
 package Blatt5;
 
-public class Main<T> {
+public class Main {
     public static void main(String[] args){
         new Vektor();
     }
