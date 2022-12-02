@@ -12,39 +12,51 @@ public class Hornerschema {
     public void run(){
         Locale.setDefault(Locale.US);
         Scanner sc=new Scanner(System.in);
+        System.out.println("Geben sie den Grad des Polynoms an");
         this.grad=sc.nextInt();
         this.koeffizienten=new double[this.grad+1];
-        for(int i=0;i<this.koeffizienten.length;i++){
+        for(int i=this.koeffizienten.length-1;i>=0;i--){
+            System.out.println("Geben sie den "+(this.koeffizienten.length-i)+"-ten Koeffizienten an");
             koeffizienten[i]=Double.valueOf(sc.next());
         }
-        double x=sc.nextDouble();
-        System.out.println(toString(calcHorner(x)));
-
+        printP();
+        System.out.println("Geben sie eine Stelle \"x\" zur berechnung des Horner-Schemas ein");
+        sc.nextLine();
+        while(true){
+            String input=sc.nextLine();
+            if(input.equalsIgnoreCase("exit"))break;
+            else if(input.matches("-?[0-9]*")){
+                double[] result=calcHorner(Double.valueOf(input));
+                System.out.println(result[0]+" "+result[1]);
+            }
+            else {
+                System.out.println("Invaid input. Please make sure your input is correct");
+            }
+        }
         sc.close();
     }
     public double[] calcHorner(double x){
         double[] result=new double[2];
-        double[] y=new double[this.grad];
-        double[] z=new double[this.grad];
-        y[0]=koeffizienten[koeffizienten.length-1];
-        z[0]=koeffizienten[koeffizienten.length-1];
-        System.out.println(y[0]+" "+z[0]);
-        System.out.println();
-        for(int k=1;k<this.grad;k++){
-            y[k]=x*y[k-1]+koeffizienten[(this.grad-1)-k];
+        double y=koeffizienten[0];
+        double z=koeffizienten[0];
+        for(int k=1;k<=this.grad;k++){
+            y=(y*x)+koeffizienten[(this.koeffizienten.length-1)-k];
+            if(k<=this.grad-1)z=z*x+y;
         }
-        for(int k=1;k<this.grad-1;k++){
-            z[k]=x*z[k-1]+y[k];
-        }
-        result[0]=y[this.grad-1];
-        result[1]=z[this.grad-1];
-        System.out.println(toString(y));
-        System.out.println(toString(z));
+        result[0]=y;
+        result[1]=z;
         return result;
     }
     public String toString(double[] input){
         String result="";
         for(double d:input)result+=d+" ";
         return result;
+    }
+    public void printP(){
+        String result="";
+        for(int i=this.grad;i>=0;i--){
+            result+=this.koeffizienten[i]+"x"+i+" ";
+        }
+        System.out.println(result);
     }
 }
