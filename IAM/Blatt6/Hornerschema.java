@@ -1,7 +1,7 @@
 package Blatt6;
 
 import java.util.Scanner;
-import java.util.Locale;;
+import java.util.Locale;
 
 public class Hornerschema {
     private int grad=0;
@@ -12,23 +12,31 @@ public class Hornerschema {
     public void run(){
         Locale.setDefault(Locale.US);
         Scanner sc=new Scanner(System.in);
-        System.out.println("Geben sie den Grad des Polynoms an");
-        this.grad=sc.nextInt();
+        System.out.println("Grad des Polynoms:");
+        String input=sc.nextLine();
+        while(!input.matches("[0-9]+")){
+            System.out.println("Falsche Eingabe, ganze Zahl erwartet.");
+            input=sc.nextLine();
+        }
+        this.grad=Integer.valueOf(input);
         this.koeffizienten=new double[this.grad+1];
         for(int i=this.koeffizienten.length-1;i>=0;i--){
-            System.out.println("Geben sie den "+(this.koeffizienten.length-i)+"-ten Koeffizienten an");
-            koeffizienten[i]=Double.valueOf(sc.next());
+            System.out.println("Eingabe "+(this.koeffizienten.length-i)+"-ten Koeffizienten:");
+            input=sc.nextLine();
+            while(!input.matches("-?[0-9]+\\.?[0-9]+")){
+                System.out.println("Falsche Eingabe, reelle Zahl erwartet.");
+                input=sc.nextLine();
+            }
+            koeffizienten[i]=Double.valueOf(input);
         }
-        sc.nextLine();
-
         printP();
-        System.out.println("\nSie koennen nun wiederholt werte in das Horner-Shema eingeben.\nZum beenden \"exit\" eingeben");
+        System.out.println("\nWert fuer die Horner-Shema Evaulaion.\nZum beenden \"exit\" eingeben");
         while(true){
-            String input=sc.nextLine();
+            input=sc.nextLine();
             if(input.equalsIgnoreCase("exit"))break;
-            else if(input.matches("-?[0-9]*")){
+            else if(input.matches("-?[0-9]*\\.?[0-9]*")){
                 double[] result=calcHorner(Double.valueOf(input));
-                System.out.println("f(x)="+result[0]+"\tf'(x)="+result[1]);
+                System.out.println("f("+input+") = "+result[0]+"\tf'("+input+") = "+result[1]);
             }
             else System.out.println("Invalide Eingabe. Bitte erneut versuchen");
         }
@@ -46,16 +54,11 @@ public class Hornerschema {
         result[1]=z;
         return result;
     }
-    public String toString(double[] input){
-        String result="";
-        for(double d:input)result+=d+" ";
-        return result;
-    }
     public void printP(){
-        String result="Eingegebenes Polynom: ";
-        for(int i=this.grad;i>0;i--){
+        String result="Eingegebenes Polynom: P(x) = ";
+        for(int i=this.grad;i>1;i--){
             result+=this.koeffizienten[i]+"x^("+i+") + ";
         }
-        System.out.println(result+this.koeffizienten[0]+"x^(0)");
+        System.out.println(result+this.koeffizienten[1]+"x + "+this.koeffizienten[0]);
     }
 }
