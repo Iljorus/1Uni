@@ -3,7 +3,7 @@ package test.JFrame;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-import java.awt.*;
+//import java.awt.*;
 import java.awt.event.*;
 
 
