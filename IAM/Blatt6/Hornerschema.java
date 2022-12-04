@@ -23,7 +23,7 @@ public class Hornerschema {
         for(int i=this.koeffizienten.length-1;i>=0;i--){
             write("Eingabe "+(this.koeffizienten.length-i)+"-ten Koeffizienten:");
             input=sc.nextLine();
-            while(!input.matches("-?[0-9]+\\.?[0-9]+")){
+            while(!input.matches("(-?)([0-9]+)(\\.[0-9]+)?")){
                 write("Falsche Eingabe, reelle Zahl erwartet.");
                 input=sc.nextLine();
             }
