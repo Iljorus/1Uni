@@ -18,7 +18,7 @@ public class Hornerschema {
         //Assigns the degree of the polonomial
         String input=sc.nextLine();
         while(!input.matches("[0-9]+")){
-            write("Falsche Eingabe, ganze Zahl erwartet.");
+            write("Invalide Eingabe, ganze Zahl erwartet.");
             input=sc.nextLine();
         }
         this.grad=Integer.valueOf(input);
@@ -29,14 +29,15 @@ public class Hornerschema {
             write("Eingabe "+(this.koeffizienten.length-i)+"-ten Koeffizienten:");
             input=sc.nextLine();
             while(!input.matches("(-?)([0-9]+)(\\.[0-9]+)?")){
-                write("Falsche Eingabe, reelle Zahl erwartet.");
+                write("Invalide Eingabe, ");
                 input=sc.nextLine();
             }
             koeffizienten[i]=Double.valueOf(input);
         }
+        //fill();
         printPoly();
 
-        //Calculates f(x) and f'(x) 
+        //
         write("\nWert fuer die Horner-Shema Evaulaion.\nZum beenden \"exit\" eingeben");
         while(true){
             input=sc.nextLine();
@@ -45,7 +46,7 @@ public class Hornerschema {
                 double[] result=calcHorner(Double.valueOf(input));
                 write("f("+input+") = "+result[0]+"\tf'("+input+") = "+result[1]);
             }
-            else write("Invalide Eingabe. Bitte erneut versuchen");
+            else write("Invalide Eingabe, reelle Zahl erwartet.");
         }
         sc.close();
     }
@@ -72,11 +73,12 @@ public class Hornerschema {
      * Prints polonomial
      */
     public void printPoly(){
-        String result="Eingegebenes Polynom: P(x) = ";
+        String result="\nEingegebenes Polynom: P(x) =";
         for(int i=this.grad;i>1;i--){
-            result+=this.koeffizienten[i]+"x^("+i+") + ";
+            result+=((this.koeffizienten[i]>0)?" + ":" - ")+Math.abs(this.koeffizienten[i]) + " x^("+((i>1)?i:"")+")";
         }
-        write(result+this.koeffizienten[1]+"x + "+this.koeffizienten[0]);
+        result+=((this.koeffizienten[0]>0)?" + ":" - ")+Math.abs(this.koeffizienten[0]);
+        write(result);
     }
 
     /**
@@ -85,5 +87,12 @@ public class Hornerschema {
      */
     public void write(String x){
         System.out.println(x);
+    }
+
+    public void fill(){
+        double RANGE=10;
+        for(int i=0;i<=this.grad;i++){
+            this.koeffizienten[i]=(RANGE/2)-RANGE*Math.random();
+        }
     }
 }
