@@ -34,7 +34,7 @@ public class Hornerschema {
         while(true){
             input=sc.nextLine();
             if(input.equalsIgnoreCase("exit"))break;
-            else if(input.matches("-?[0-9]*\\.?[0-9]*")){
+            else if(input.matches("(-?)([0-9]+)(\\.[0-9]+)?")){
                 double[] result=calcHorner(Double.valueOf(input));
                 write("f("+input+") = "+result[0]+"\tf'("+input+") = "+result[1]);
             }
