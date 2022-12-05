@@ -6,18 +6,21 @@ import java.util.Locale;
 public class Hornerschema {
     private int grad=0;
     private double[] koeffizienten;
+    private final String GANZEZAHL="(-?)[0-9]+";
+    private final String REELLEZAHL="(-?)([0-9]+)(\\.[0-9]+)?";
     public Hornerschema(){
         run();
     }
     public void run(){
-        //Creating "Scanner" instance and setting regional interpretation to US
+
+        //Creating "Scanner" instance and setting regional interpretation to "US"
         Locale.setDefault(Locale.US);
         Scanner sc=new Scanner(System.in);
         write("Grad des Polynoms:");
         
         //Assigns the degree of the polonomial
         String input=sc.nextLine();
-        while(!input.matches("[0-9]+")){
+        while(!input.matches(GANZEZAHL)){
             write("Invalide Eingabe, ganze Zahl erwartet.");
             input=sc.nextLine();
         }
@@ -28,8 +31,8 @@ public class Hornerschema {
         for(int i=this.koeffizienten.length-1;i>=0;i--){
             write("Eingabe "+(this.koeffizienten.length-i)+"-ten Koeffizienten:");
             input=sc.nextLine();
-            while(!input.matches("(-?)([0-9]+)(\\.[0-9]+)?")){
-                write("Invalide Eingabe, ");
+            while(!input.matches(REELLEZAHL)){
+                write("Invalide Eingabe, reelle Zahl erwartet");
                 input=sc.nextLine();
             }
             koeffizienten[i]=Double.valueOf(input);
@@ -42,7 +45,7 @@ public class Hornerschema {
         while(true){
             input=sc.nextLine();
             if(input.equalsIgnoreCase("exit"))break;
-            else if(input.matches("(-?)([0-9]+)(\\.[0-9]+)?")){
+            else if(input.matches(REELLEZAHL)){
                 double[] result=calcHorner(Double.valueOf(input));
                 write("f("+input+") = "+result[0]+"\tf'("+input+") = "+result[1]);
             }
@@ -57,8 +60,8 @@ public class Hornerschema {
      * @return {@code double[0]}: f(x)      {@code double[1]}: f'(x)
      */
     public double[] calcHorner(double x){
-        double y=koeffizienten[0];
-        double z=koeffizienten[0];
+        double y=koeffizienten[this.grad];
+        double z=koeffizienten[this.grad];
         for(int k=1;k<=this.grad;k++){
             y=(y*x)+koeffizienten[(this.grad)-k];
             if(k<=this.grad-1)z=z*x+y;
@@ -73,8 +76,8 @@ public class Hornerschema {
      * Prints polonomial
      */
     public void printPoly(){
-        String result="\nEingegebenes Polynom: P(x) =";
-        for(int i=this.grad;i>1;i--){
+        String result="\nEingegebenes Polynom: P(x) ="+((this.koeffizienten[this.grad]>0)?" ":" - ")+Math.abs(this.koeffizienten[this.grad])+" x^("+this.grad+")";
+        for(int i=this.grad-1;i>1;i--){
             result+=((this.koeffizienten[i]>0)?" + ":" - ")+Math.abs(this.koeffizienten[i]) + " x^("+((i>1)?i:"")+")";
         }
         result+=((this.koeffizienten[0]>0)?" + ":" - ")+Math.abs(this.koeffizienten[0]);
