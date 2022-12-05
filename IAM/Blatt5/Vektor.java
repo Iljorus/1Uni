@@ -11,7 +11,7 @@ public class Vektor {
         vektor();
     }
     public void vektor(){
-        Logger log=new Logger(String.valueOf(this.getClass()).split(" ")[1]);
+        Logger log=new Logger(this);
         Measurement m=new Measurement(log);
         Locale.setDefault(Locale.US);
         Scanner sc=new Scanner(System.in);

@@ -2,6 +2,7 @@ package test.LambdaExpressions;
 
 public class Main {
     public static void main(String[] args){
+        
         //Creates a new instance of the ReferencedClass
         ReferencedClass reference=new ReferencedClass();
 

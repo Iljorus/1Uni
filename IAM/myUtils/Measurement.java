@@ -9,7 +9,7 @@ public class Measurement{
      * @param log {@code Logger} to write to
      */
     public Measurement(Logger log){
-        this.log=new Logger(String.valueOf(this.getClass()).split(" ")[1], log.getFile());
+        this.log=new Logger(this, log.getFile());
     }
     /** 
      * Starts the messurment
