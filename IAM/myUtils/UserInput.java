@@ -23,7 +23,6 @@ public class UserInput {
                 case "Integer":{
                     if(input.matches(INTEGER))return Integer.valueOf(input);
                     else break;
-                    
                 }
                 case "Boolean":{
                     if(input.equalsIgnoreCase("true") || input.equalsIgnoreCase("1"))return Boolean.TRUE;
@@ -46,9 +45,36 @@ public class UserInput {
         System.out.println(x);
         return this;
     }
-    public void getThisOrThat(String dies, String das){
+    public Object getThisOrThat(String[] types){
         //TODO multiplte return types shall be allowed
 
-
+        while(true){
+            String input=sc.nextLine();
+            //log.file("Requested input, type "+type);
+            //log.file("Got: "+String.valueOf(input));
+            for(int i=0;i<types.length;i++){
+                switch(types[i]){
+                    case "String":{
+                        return input;
+                    }
+                    case "Integer":{
+                        if(input.matches(INTEGER))return Integer.valueOf(input);
+                        else break;
+                    }
+                    case "Boolean":{
+                        if(input.equalsIgnoreCase("true") || input.equalsIgnoreCase("1"))return Boolean.TRUE;
+                        else if(input.equalsIgnoreCase("false") || input.equalsIgnoreCase("0"))return Boolean.FALSE;
+                        else break;
+                    }
+                    case "Double":{
+                        if(input.matches(DOUBLE))return Double.valueOf(input);
+                        else break;
+                    }
+                }
+                if(i==types.length){
+                    System.out.println("maximal");
+                }
+            }
+        }
     }
 }
