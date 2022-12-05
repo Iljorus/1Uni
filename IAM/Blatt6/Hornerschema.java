@@ -30,7 +30,6 @@ public class Hornerschema {
         //fill();
         printPoly();
 
-        //
         Object[] input;
         write("\nWert fuer die Horner-Shema Evaulaion.\nZum beenden \"exit\" eingeben");
         while(true){
@@ -50,15 +49,14 @@ public class Hornerschema {
      * @return {@code double[0]}: f(x)      {@code double[1]}: f'(x)
      */
     public double[] calcHorner(double x){
-        double y=koeffizienten[this.grad];
-        double z=koeffizienten[this.grad];
-        for(int k=1;k<=this.grad;k++){
-            y=(y*x)+koeffizienten[(this.grad)-k];
-            if(k<=this.grad-1)z=z*x+y;
-        }
         double[] result=new double[2];
-        result[0]=y;
-        result[1]=z;
+        result[0]=koeffizienten[this.grad];
+        result[1]=koeffizienten[this.grad];
+        
+        for(int k=1;k<=this.grad;k++){
+            result[0]=(result[0]*x)+koeffizienten[(this.grad)-k];
+            if(k<=this.grad-1)result[1]=result[1]*x+result[0];
+        }
         return result;
     }
 
@@ -80,12 +78,5 @@ public class Hornerschema {
      */
     public void write(String x){
         System.out.println(x);
-    }
-
-    public void fill(){
-        double RANGE=10;
-        for(int i=0;i<=this.grad;i++){
-            this.koeffizienten[i]=(RANGE/2)-RANGE*Math.random();
-        }
     }
 }
