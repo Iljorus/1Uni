@@ -11,25 +11,33 @@ public class Logger {
     private String source;
     /** 
      * Creates the logger with the default path {@code ./logs/}
-     * @param s {@code String} source
+     * @param c {@code Object} Class
      * */ 
-    public Logger(String s){
+    public Logger(Object c){
         this.path=this.DEFAULT_PATH;
-        this.source=s;
+        setSource(c);
         mkFile(getDate());
     }
     /**
-     * Creates the logger without creating a file to write to
-     * @param s {@code String} source
+     * Creates the logger without creating a file
+     * @param c {@code Object} Class
      * @param file -> {@code false}
      */
-    public Logger(String s, boolean file){
-        this.source=s;
+    public Logger(Object c, boolean file){
+        setSource(c);
     }
-    public Logger(String s, File f){
-        this.source=s;
+    /**
+     * Creats the logger with an already existing file
+     * @param c {@code Object}
+     * @param f {@code File}
+     */
+    public Logger(Object c, File f){
+        setSource(c);
         this.fileOut=f;
     }
+    /**
+     * @deprecated
+     */
     public void reCreateLogger(){
         mkFile(this.fileOut.getName());
     }
@@ -38,9 +46,6 @@ public class Logger {
      * */ 
     public void setPath(String path){
         this.path=path;
-    }
-    public void setFile(File fileOut){
-        this.fileOut=fileOut;
     }
     /**
      * Creates a new file at the pre-determined path
@@ -74,7 +79,7 @@ public class Logger {
     /** 
      * Prints a {@code String} to the console
      * @param input An input String
-     * @see toFile()
+     * @see file()
      * */  
     public void console(String x){
         x="["+getTime()+"] "+getSource(true)+x;
@@ -83,7 +88,7 @@ public class Logger {
     /** 
      * Prints a {@code String} to the file
      * @param input An input String
-     * @see toFile
+     * @see file
      * */ 
     public void file(String x){
         if(this.fileOut==null)return;
@@ -106,17 +111,20 @@ public class Logger {
         console(x);
         file(x);
     }
+    /**
+     * Prints a {@code String} to file and to "System.out" without styling
+     * @param x
+     */
     public void logAndDefault(String x){
         System.out.println(x);
         file(x);
     }
-
     /**
      * 
-     * @param s {@code String} new Source
+     * @param c {@code Object} Class
      */
-    public void setSource(String s){
-        this.source=s;
+    public void setSource(Object c){
+        this.source=String.valueOf(c.getClass()).split(" ")[1];
     }
     /**
      * @param c {@code Boolean} for cosmetic styling
@@ -128,6 +136,9 @@ public class Logger {
         }
         return this.source;
     }
+    /**
+     * @return {@code File} of this logger
+     */
     public File getFile(){
         return this.fileOut;
     }
