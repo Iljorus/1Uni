@@ -8,7 +8,7 @@ import java.util.Locale;
 public class Hornerschema {
     private int grad=0;
     private double[] koeffizienten;
-    private final String REELLEZAHL="(-?)([0-9]+)(\\.[0-9]+)?";
+    private final String[] OPTIONS={"Double", "String"};
     public Hornerschema(){
         run();
     }
@@ -20,27 +20,26 @@ public class Hornerschema {
         UserInput in=new UserInput(sc);
         
         //Assigns the degree of the polonomial
-        this.grad=(Integer)in.print("Grad des Polynoms:").getNext("Integer");
+        this.grad=(Integer)in.print("Grad des Polynoms:").get("Integer");
 
         //Assigns the koefficients of the polonomial
         this.koeffizienten=new double[this.grad+1];
         for(int i=this.koeffizienten.length-1;i>=0;i--){
-            koeffizienten[i]=(Double)in.print("Eingabe "+(this.koeffizienten.length-i)+"-ten Koeffizienten:").getNext("Double");
+            koeffizienten[i]=(Double)in.print("Eingabe "+(this.koeffizienten.length-i)+"-ten Koeffizienten:").get("Double");
         }
         //fill();
         printPoly();
 
         //
-        String input="";
+        Object[] input;
         write("\nWert fuer die Horner-Shema Evaulaion.\nZum beenden \"exit\" eingeben");
         while(true){
-            input=(String)in.getNext("String");
-            if(input.equalsIgnoreCase("exit"))break;
-            else if(input.matches(REELLEZAHL)){
-                double[] result=calcHorner(Double.valueOf(input));
-                write("f("+input+") = "+result[0]+"\tf'("+input+") = "+result[1]);
+            input=in.getNext(OPTIONS);
+            if(input[0] instanceof String && String.valueOf(input[0]).equalsIgnoreCase("exit"))break;
+            else if(input[0] instanceof Double){
+                double[] result=calcHorner(Double.valueOf((Double)input[0]));
+                write("f("+input[0]+") = "+result[0]+"\tf'("+input[0]+") = "+result[1]);
             }
-            else write("Invalide Eingabe, reelle Zahl erwartet.");
         }
         sc.close();
     }

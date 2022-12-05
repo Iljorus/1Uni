@@ -8,9 +8,10 @@ public class Main {
         //TODO Gaus-algo
         Scanner sc=new Scanner(System.in);
         UserInput u=new UserInput(sc);
-        System.out.println(u.print("Bitte Wort eingeben").getNext("String"));
-        String[] input={"Double", "String", "Integer"};
-        System.out.println(u.getThisOrThat(input).getClass());
+        //System.out.println(u.print("Bitte Wort eingeben").get("String"));
+        String[] options={"Double", "String"};
+        Object[] a=u.getNext(options);
+        System.out.println(a[0]+"\t"+a[1]);
         sc.close();
     }
     

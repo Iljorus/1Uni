@@ -11,7 +11,7 @@ public class UserInput {
         this.sc=sc;
         //this.log=new Logger(this, log.getFile());
     }
-    public Object getNext(String type){
+    public Object get(String type){
         while(true){
             String input=sc.nextLine();
             //log.file("Requested input, type "+type);
@@ -45,9 +45,8 @@ public class UserInput {
         System.out.println(x);
         return this;
     }
-    public Object getThisOrThat(String[] types){
-        //TODO multiplte return types shall be allowed
-
+    public Object[] getNext(String[] types){
+        Object[] result=new Object[2];
         while(true){
             String input=sc.nextLine();
             //log.file("Requested input, type "+type);
@@ -55,19 +54,37 @@ public class UserInput {
             for(int i=0;i<types.length;i++){
                 switch(types[i]){
                     case "String":{
-                        return input;
+                        result[0]=input;
+                        result[1]="String";
+                        return result;
                     }
                     case "Integer":{
-                        if(input.matches(INTEGER))return Integer.valueOf(input);
+                        if(input.matches(INTEGER)){
+                            result[0]=Integer.valueOf(input);
+                            result[1]="Integer";
+                            return result;
+                        }
                         else break;
                     }
                     case "Boolean":{
-                        if(input.equalsIgnoreCase("true") || input.equalsIgnoreCase("1"))return Boolean.TRUE;
-                        else if(input.equalsIgnoreCase("false") || input.equalsIgnoreCase("0"))return Boolean.FALSE;
+                        if(input.equalsIgnoreCase("true") || input.equalsIgnoreCase("1")){
+                            result[0]=Boolean.TRUE;
+                            result[1]="Boolean";
+                            return result;
+                        }
+                        else if(input.equalsIgnoreCase("false") || input.equalsIgnoreCase("0")){
+                            result[0]=Boolean.FALSE;
+                            result[1]="Boolean";
+                            return result;
+                        }
                         else break;
                     }
                     case "Double":{
-                        if(input.matches(DOUBLE))return Double.valueOf(input);
+                        if(input.matches(DOUBLE)){
+                            result[0]=Double.valueOf(input);
+                            result[1]="Double";
+                            return result;
+                        }
                         else break;
                     }
                 }
