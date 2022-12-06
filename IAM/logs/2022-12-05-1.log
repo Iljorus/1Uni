@@ -1,0 +1,18 @@
+[21:48:30] [myUtils.Logger]: Log created 2022-12-05-1.log
+[21:48:30] [Blatt5.Vektor]: Bitte leange der Vektoren angeben
+[21:48:35] [Blatt5.Vektor]: User input: 10
+[21:48:35] [Blatt5.Vektor]: Bitte eine Zahl fuer die Skalarmultiplikation eingeben
+[21:48:35] [Blatt5.Vektor]: User input: 10
+[21:48:35] [Blatt5.Vektor]: Zufaellige zahlen? Y/N
+[21:48:36] [myUtils.Measurement]: Messurment started
+[21:48:36] [Blatt5.Vektor]: x = [30.0 6.0 9.0 45.0 13.0 30.0 30.0 35.0 34.0 7.0]
+[21:48:36] [Blatt5.Vektor]: y = [35.0 20.0 39.0 24.0 15.0 32.0 40.0 4.0 42.0 33.0]
+[21:48:36] [Blatt5.Vektor]: x + y = [65.0 26.0 48.0 69.0 28.0 62.0 70.0 39.0 76.0 40.0]
+[21:48:36] [Blatt5.Vektor]: x - y = [-5.0 -14.0 -30.0 21.0 -2.0 -2.0 -10.0 31.0 -8.0 -26.0]
+[21:48:36] [Blatt5.Vektor]: x * y = [1050.0 120.0 351.0 1080.0 195.0 960.0 1200.0 140.0 1428.0 231.0]
+[21:48:36] [Blatt5.Vektor]: x / y = [0.8571428571428571 0.3 0.23076923076923078 1.875 0.8666666666666667 0.9375 0.75 8.75 0.8095238095238095 0.21212121212121213]
+[21:48:36] [Blatt5.Vektor]: x * l = [300.0 60.0 90.0 450.0 130.0 300.0 300.0 350.0 340.0 70.0]
+[21:48:36] [Blatt5.Vektor]: y * l = [350.0 200.0 390.0 240.0 150.0 320.0 400.0 40.0 420.0 330.0]
+[21:48:36] [Blatt5.Vektor]: x @ y = 6755
+[21:48:36] [myUtils.Measurement]: Messurment end
+[21:48:36] [myUtils.Measurement]: Processing time 7 ms
