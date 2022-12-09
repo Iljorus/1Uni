@@ -3,7 +3,6 @@ package myUtils.logger;
 import java.time.LocalTime;
 import java.time.LocalDate;
 
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
