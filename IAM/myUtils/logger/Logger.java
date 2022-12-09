@@ -3,15 +3,15 @@ package myUtils.logger;
 import java.time.LocalTime;
 import java.time.LocalDate;
 
-/*
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.BufferedWriter;
-*/
-import java.io.*;
 
+//import java.io.*;
+//TODO only write full class path when error. (Do it like MC logs)
 public class Logger {
     private final String DEFAULT_PATH="./logs/";
     private String path;

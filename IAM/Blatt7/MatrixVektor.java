@@ -3,7 +3,7 @@ package Blatt7;
 import java.util.Scanner;
 
 import myUtils.userInput.*;
-import myUtils.logger.*;;
+import myUtils.logger.*;
 
 public class MatrixVektor {
     private double[][] matrix;
