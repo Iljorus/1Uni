@@ -2,7 +2,7 @@ package Blatt4;
 
 import java.util.*;
 import myUtils.Measurement;
-import myUtils.Logger;
+import myUtils.logger.*;
 
 public class Main {
    public static void main(String[] args){

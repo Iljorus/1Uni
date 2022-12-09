@@ -1,5 +1,6 @@
 package Blatt6;
 
+import myUtils.logger.Logger;
 import myUtils.userInput.*;
 
 import java.util.Scanner;
@@ -17,7 +18,7 @@ public class Hornerschema {
         //Creating "Scanner" instance and setting regional interpretation to "US"
         Locale.setDefault(Locale.US);
         Scanner sc=new Scanner(System.in);
-        UserInput in=new UserInput(sc);
+        UserInput in=new UserInput(sc, new Logger(this));
         
         //Assigns the degree of the polonomial
         this.grad=(Integer)in.print("Grad des Polynoms:").get(InputType.Integer);
@@ -30,14 +31,14 @@ public class Hornerschema {
         //fill();
         printPoly();
 
-        Object[] input;
+        Object input;
         write("\nWert fuer die Horner-Shema Evaulaion.\nZum beenden \"exit\" eingeben");
         while(true){
             input=in.getNext(OPTIONS);
-            if(input[0] instanceof String && String.valueOf(input[0]).equalsIgnoreCase("exit"))break;
-            else if(input[0] instanceof Double){
-                double[] result=calcHorner(Double.valueOf((Double)input[0]));
-                write("f("+input[0]+") = "+result[0]+"\tf'("+input[0]+") = "+result[1]);
+            if(input instanceof String && String.valueOf(input).equalsIgnoreCase("exit"))break;
+            else if(input instanceof Double){
+                double[] result=calcHorner(Double.valueOf((Double)input));
+                write("f("+input+") = "+result[0]+"\tf'("+input+") = "+result[1]);
             }
         }
         sc.close();

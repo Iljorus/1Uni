@@ -1,5 +1,7 @@
 package myUtils;
 
+import myUtils.logger.*;
+
 public class Measurement{
     private long startTime=0;
     private long endTime=0;
@@ -16,7 +18,7 @@ public class Measurement{
     */
     public void start(){
         this.startTime=System.currentTimeMillis();
-        log.file("Messurment started");
+        log.file("Messurment started", InfoType.DEBUG);
     }
     /**
      * Ends the messurment
@@ -24,7 +26,7 @@ public class Measurement{
      */
     public Measurement end(){
         this.endTime=System.currentTimeMillis();
-        log.file("Messurment end");
+        log.file("Messurment end", InfoType.DEBUG);
         return this;
     }
     /** 
@@ -38,6 +40,6 @@ public class Measurement{
         else if(difference>=1E3 && difference<60E6)result+=difference*1E-3+" sec";
         else if(difference>=60E6 && difference<360E6)result+=difference*1E-6+" min";
         else result= "Processing took too long. FIX YOUR CODE!!";
-        log.file(result);
+        log.file(result, InfoType.DEBUG);
     }
 }

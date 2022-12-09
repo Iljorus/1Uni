@@ -3,14 +3,16 @@ package Blatt7;
 import java.util.Scanner;
 
 import myUtils.userInput.*;
+import myUtils.logger.*;;
 
 public class MatrixVektor {
     private double[][] matrix;
     private double[] vektor;
     private double[] result;
-    private UserInput userInput=new UserInput(new Scanner(System.in));
+    private UserInput userInput;
     
-    public MatrixVektor(int m, int n){
+    public MatrixVektor(int m, int n, Logger log){
+        userInput=new UserInput(new Scanner(System.in), log);
         matrix=matrixEinlesen(m, n);
         matrixAusgeben(matrix);
         vektor=vektorEinlesen(n);

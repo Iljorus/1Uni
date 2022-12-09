@@ -1,14 +1,23 @@
-package myUtils;
+package myUtils.logger;
 
 import java.time.LocalTime;
 import java.time.LocalDate;
+
+/*
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.BufferedWriter;
+*/
 import java.io.*;
 
 public class Logger {
-    private final String DEFAULT_PATH="./logs/";    //Edit this to your needs
+    private final String DEFAULT_PATH="./logs/";
     private String path;
     private File fileOut;
     private String source;
+
     /** 
      * Creates the logger with the default path {@code ./logs/}
      * @param c {@code Object} Class
@@ -18,6 +27,7 @@ public class Logger {
         setSource(c);
         mkFile(getDate());
     }
+
     /**
      * Creates the logger without creating a file
      * @param c {@code Object} Class
@@ -26,6 +36,7 @@ public class Logger {
     public Logger(Object c, boolean file){
         setSource(c);
     }
+
     /**
      * Creats the logger with an already existing file
      * @param c {@code Object}
@@ -35,18 +46,14 @@ public class Logger {
         setSource(c);
         this.fileOut=f;
     }
-    /**
-     * @deprecated
-     */
-    public void reCreateLogger(){
-        mkFile(this.fileOut.getName());
-    }
+
     /** 
      * @param path Updates the path from the default location to the specified one
      * */ 
     public void setPath(String path){
         this.path=path;
     }
+
     /**
      * Creates a new file at the pre-determined path
      * @param name A name String
@@ -63,39 +70,39 @@ public class Logger {
             for(;!output.createNewFile();i++)output=new File(this.path+name+"-"+i+".log");
             if(output!=null){
                 this.fileOut=output;
-                log("Log created " + output.getName());
+                logAndDefault("Log created " + output.getName(), InfoType.INFO);
             }
             this.source=origin;
             return;
         }
         catch (IOException e) {
-            console("An error occurred.");
-            e.printStackTrace();
+            console(e.getMessage(), InfoType.ERROR);
             this.fileOut=null;
             this.source=origin;
             return;
         }
     }
+
     /** 
      * Prints a {@code String} to the console
      * @param input An input String
-     * @see file()
      * */  
-    public void console(String x){
-        x="["+getTime()+"] "+getSource(true)+x;
+    public void console(String x, InfoType type){
+        x="["+getTime()+"] ["+getSource()+"/"+type+"]: "+x;
         System.out.println(x);
     }
+
     /** 
      * Prints a {@code String} to the file
      * @param input An input String
-     * @see file
      * */ 
-    public void file(String x){
+    public void file(Object x, InfoType type){
+        String input=String.valueOf(x);
         if(this.fileOut==null)return;
-        x="["+getTime()+"] "+getSource(true)+x;
+        input="["+getTime()+"] ["+getSource()+"/"+type+"]: "+input;
         try{
             BufferedWriter fWriter=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileOut, true), "UTF-8"));
-            fWriter.append(x);
+            fWriter.append(input);
             fWriter.newLine();
             fWriter.close();
         }
@@ -103,45 +110,46 @@ public class Logger {
             e.printStackTrace();
         }
     }
+
     /**
      * Prints a {@code String} to both console and file
      * @param x {@code String} input
      */
-    public void log(String x){
-        console(x);
-        file(x);
+    public void log(String x, InfoType type){
+        console(x, type);
+        file(x, type);
     }
+
     /**
      * Prints a {@code String} to file and to "System.out" without styling
      * @param x
      */
-    public void logAndDefault(String x){
+    public void logAndDefault(String x, InfoType type){
         System.out.println(x);
-        file(x);
+        file(x, type);
     }
+
     /**
-     * 
      * @param c {@code Object} Class
      */
     public void setSource(Object c){
         this.source=String.valueOf(c.getClass()).split(" ")[1];
     }
+
     /**
-     * @param c {@code Boolean} for cosmetic styling
      * @return {@code String} source
      */
-    private String getSource(boolean c){
-        if(c && this.source!=null){
-            return "["+this.source+"]: ";
-        }
+    private String getSource(){
         return this.source;
     }
+
     /**
      * @return {@code File} of this logger
      */
     public File getFile(){
         return this.fileOut;
     }
+
     /**
      * Fetches the current time
      * @return {@code String} HH:mm:ss
@@ -152,11 +160,19 @@ public class Logger {
         int s=LocalTime.now().getSecond();
         return ((h<10)? "0"+h:""+h)+":"+((m<10)? "0"+m:""+m)+":"+((s<10)? "0"+s:""+s);
     }
+
     /**
      * Fetches the current date
      * @return {@code String} YYYY-MM-DD
      */
     private String getDate(){
         return LocalDate.now().toString();
+    }
+
+    /**
+     * @deprecated
+     */
+    public void reCreateLogger(){
+        mkFile(this.fileOut.getName());
     }
 }

@@ -1,0 +1,11 @@
+[23:56:19] [myUtils.logger.Logger/INFO]: Log created 2022-12-09-4.log
+[23:56:20] [myUtils.userInput.UserInput/INFO]: Requested input as Integer, Got: 3 as String
+[23:56:21] [myUtils.userInput.UserInput/INFO]: Requested input as Integer, Got: 2 as String
+[23:56:22] [myUtils.userInput.UserInput/INFO]: Requested input as Double, Got: 1 as String
+[23:56:23] [myUtils.userInput.UserInput/INFO]: Requested input as Double, Got: 2 as String
+[23:56:23] [myUtils.userInput.UserInput/INFO]: Requested input as Double, Got: 3 as String
+[23:56:23] [myUtils.userInput.UserInput/INFO]: Requested input as Double, Got: 4 as String
+[23:56:23] [myUtils.userInput.UserInput/INFO]: Requested input as Double, Got: 5 as String
+[23:56:24] [myUtils.userInput.UserInput/INFO]: Requested input as Double, Got: 6 as String
+[23:56:24] [myUtils.userInput.UserInput/INFO]: Requested input as Double, Got: 1 as String
+[23:56:24] [myUtils.userInput.UserInput/INFO]: Requested input as Double, Got: 2 as String
