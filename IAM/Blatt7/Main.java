@@ -12,5 +12,4 @@ public class Main {
         int n=(int)userInput.print("Dimension n der Matrix eingeben").get(InputType.Integer);
         new MatrixVektor(m, n, log);
     }
-    
 }
