@@ -1,6 +1,6 @@
 package Blatt6;
 
-import myUtils.UserInput;
+import myUtils.userInput.*;
 
 import java.util.Scanner;
 import java.util.Locale;
@@ -8,7 +8,7 @@ import java.util.Locale;
 public class Hornerschema {
     private int grad=0;
     private double[] koeffizienten;
-    private final String[] OPTIONS={"Double", "String"};
+    private final InputType[] OPTIONS={InputType.Double, InputType.String};
     public Hornerschema(){
         run();
     }
@@ -20,12 +20,12 @@ public class Hornerschema {
         UserInput in=new UserInput(sc);
         
         //Assigns the degree of the polonomial
-        this.grad=(Integer)in.print("Grad des Polynoms:").get("Integer");
+        this.grad=(Integer)in.print("Grad des Polynoms:").get(InputType.Integer);
 
         //Assigns the koefficients of the polonomial
         this.koeffizienten=new double[this.grad+1];
         for(int i=this.koeffizienten.length-1;i>=0;i--){
-            koeffizienten[i]=(Double)in.print("Eingabe "+(this.koeffizienten.length-i)+"-ten Koeffizienten:").get("Double");
+            koeffizienten[i]=(Double)in.print("Eingabe "+(this.koeffizienten.length-i)+"-ten Koeffizienten:").get(InputType.Double);
         }
         //fill();
         printPoly();

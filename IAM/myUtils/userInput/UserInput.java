@@ -1,4 +1,4 @@
-package myUtils;
+package myUtils.userInput;
 
 import java.util.Scanner;
 
@@ -11,25 +11,25 @@ public class UserInput {
         this.sc=sc;
         //this.log=new Logger(this, log.getFile());
     }
-    public Object get(String type){
+    public Object get(InputType type){
         while(true){
             String input=sc.nextLine();
             //log.file("Requested input, type "+type);
             //log.file("Got: "+String.valueOf(input));
             switch(type){
-                case "String":{
+                case String:{
                     return input;
                 }
-                case "Integer":{
+                case Integer:{
                     if(input.matches(INTEGER))return Integer.valueOf(input);
                     else break;
                 }
-                case "Boolean":{
+                case Boolean:{
                     if(input.equalsIgnoreCase("true") || input.equalsIgnoreCase("1"))return Boolean.TRUE;
                     else if(input.equalsIgnoreCase("false") || input.equalsIgnoreCase("0"))return Boolean.FALSE;
                     else break;
                 }
-                case "Double":{
+                case Double:{
                     if(input.matches(DOUBLE))return Double.valueOf(input);
                     else break;
                 }
@@ -45,7 +45,7 @@ public class UserInput {
         System.out.println(x);
         return this;
     }
-    public Object[] getNext(String[] types){
+    public Object[] getNext(InputType[] types){
         Object[] result=new Object[2];
         while(true){
             String input=sc.nextLine();
@@ -53,12 +53,12 @@ public class UserInput {
             //log.file("Got: "+String.valueOf(input));
             for(int i=0;i<types.length;i++){
                 switch(types[i]){
-                    case "String":{
+                    case String:{
                         result[0]=input;
                         result[1]="String";
                         return result;
                     }
-                    case "Integer":{
+                    case Integer:{
                         if(input.matches(INTEGER)){
                             result[0]=Integer.valueOf(input);
                             result[1]="Integer";
@@ -66,7 +66,7 @@ public class UserInput {
                         }
                         else break;
                     }
-                    case "Boolean":{
+                    case Boolean:{
                         if(input.equalsIgnoreCase("true") || input.equalsIgnoreCase("1")){
                             result[0]=Boolean.TRUE;
                             result[1]="Boolean";
@@ -79,7 +79,7 @@ public class UserInput {
                         }
                         else break;
                     }
-                    case "Double":{
+                    case Double:{
                         if(input.matches(DOUBLE)){
                             result[0]=Double.valueOf(input);
                             result[1]="Double";
