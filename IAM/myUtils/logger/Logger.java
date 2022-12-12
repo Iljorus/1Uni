@@ -1,16 +1,18 @@
 package myUtils.logger;
 
 import java.time.LocalTime;
+
 import java.time.LocalDate;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.BufferedWriter;
 
-//import java.io.*;
 //TODO only write full class path when error. (Do it like MC logs)
+//If logging to console isn't needed anymore, rename methods to match InfoTypes
 public class Logger {
     private final String DEFAULT_PATH="./logs/";
     private String path;
@@ -62,7 +64,7 @@ public class Logger {
      */
     private void mkFile(String name){
         String origin=this.source;
-        this.source=String.valueOf(this.getClass()).split(" ")[1];
+        setSource(this);
         try {
             int i=1;
             File output=new File(this.path+name+"-"+i+".log");
@@ -74,8 +76,8 @@ public class Logger {
             this.source=origin;
             return;
         }
-        catch (IOException e) {
-            console(e.getMessage(), InfoType.ERROR);
+        catch(IOException ioE){
+            console(ioE.getMessage(), InfoType.ERROR);
             this.fileOut=null;
             this.source=origin;
             return;
@@ -87,7 +89,12 @@ public class Logger {
      * @param input An input String
      * */  
     public void console(String x, InfoType type){
-        x="["+getTime()+"] ["+getSource()+"/"+type+"]: "+x;
+        if(type.equals(InfoType.ERROR)){
+            x="["+getTime()+"] ["+getSource()+"/"+type+"]: "+x;    
+        }
+        else {
+            x="["+getTime()+"] ["+"Client"+"/"+type+"]: "+x;
+        }
         System.out.println(x);
     }
 
@@ -96,17 +103,27 @@ public class Logger {
      * @param input An input String
      * */ 
     public void file(Object x, InfoType type){
-        String input=String.valueOf(x);
-        if(this.fileOut==null)return;
-        input="["+getTime()+"] ["+getSource()+"/"+type+"]: "+input;
         try{
+            String input=String.valueOf(x);
+            if(this.fileOut==null)throw new FileNotFoundException("Cannot log to file, path is empty");
+            if(type.equals(InfoType.ERROR)){
+                input="["+getTime()+"] ["+getSource()+"/"+type+"]: "+input;
+            }
+            else{
+                input="["+getTime()+"] ["+"Client"+"/"+type+"]: "+input;
+            }
+            
             BufferedWriter fWriter=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileOut, true), "UTF-8"));
             fWriter.append(input);
             fWriter.newLine();
             fWriter.close();
         }
-        catch(IOException e){
-            e.printStackTrace();
+        catch(IOException ioE){
+            String origin=this.source;
+            setSource(this);
+            console(ioE.getMessage(), InfoType.ERROR);
+            setPath(origin);
+            return;
         }
     }
 
