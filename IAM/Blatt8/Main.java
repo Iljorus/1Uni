@@ -1,7 +1,6 @@
 package Blatt8;
 
 import myUtils.logger.*;
-import myUtils.userInput.*;
 
 public class Main {
     public static void main(String[] args) {

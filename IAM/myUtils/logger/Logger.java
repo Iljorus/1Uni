@@ -48,13 +48,6 @@ public class Logger {
         this.fileOut=f;
     }
 
-    /** 
-     * @param path Updates the path from the default location to the specified one
-     * */ 
-    public void setPath(String path){
-        this.path=path;
-    }
-
     /**
      * Creates a new file at the pre-determined path
      * @param name A name String
@@ -113,16 +106,16 @@ public class Logger {
                 input="["+getTime()+"] ["+"Client"+"/"+type+"]: "+input;
             }
             
-            BufferedWriter fWriter=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileOut, true), "UTF-8"));
-            fWriter.append(input);
-            fWriter.newLine();
-            fWriter.close();
+            BufferedWriter writer=createWriter();
+            writer.append(input);
+            writer.newLine();
+            writer.close();
         }
         catch(IOException ioE){
             String origin=this.source;
             setSource(this);
             console(ioE.getMessage(), InfoType.ERROR);
-            setPath(origin);
+            setSource(origin);
             return;
         }
     }
@@ -143,6 +136,16 @@ public class Logger {
     public void logAndDefault(String x, InfoType type){
         System.out.println(x);
         file(x, type);
+    }
+
+    private BufferedWriter createWriter(){
+        try{
+            return new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileOut, true), "UTF-8"));
+        }
+        catch(IOException ioE){
+            console(ioE.getMessage(), InfoType.ERROR);
+            return null;
+        }
     }
 
     /**
