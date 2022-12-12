@@ -1,10 +1,5 @@
 package myUtils.logger;
 
-import myUtils.userInput.*;
-import java.util.Scanner;
-
-import Blatt8.Main;
-
 import java.time.LocalTime;
 import java.time.LocalDate;
 
@@ -15,44 +10,36 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.BufferedWriter;
 
-//TODO only write full class path when error. (Do it like MC logs)
+//only write full class path when error. (Do it like MC logs)
 //If logging to console isn't needed anymore, rename methods to match InfoTypes
-//Multithreading - finished 1/4
+//Not every log is a client log haha
+//Console method kinda unnecessary lol
 public class Logger implements Runnable{
     private final String DEFAULT_PATH="./logs/";
     private String path;
     private File fileOut;
     private String source;
     private BufferedWriter writer;
-    private Main test;
+    private volatile boolean running=true;
 
-    //WORKS!! =D
+    /**
+     * Starts the logger
+     */
     public void run(){
-        UserInput userInput=new UserInput(new Scanner(System.in), this);
         System.out.println("Running");
-        this.writer=createWriter();
-        String input="";
-        while(test.test){
-            System.out.print(test.test);
-            input=String.valueOf(userInput.get(InputType.String));
-            if(input.equalsIgnoreCase("exit")){
-                break;
-            }
+        while(running){
         }
-    }
-    
-    public void setVar(Main in){
-        test=in;
     }
 
-    public void test(String input){
+    /**
+     * Stops the logger and closes the writer
+     */
+    public void halt(){
+        running=false;
         try{
-            writer.append(input);
-            writer.newLine();
-            writer.flush();     //Prints every "staged change" to file
-        }
-        catch(IOException ioE){
-            ioE.printStackTrace();
+            writer.close();
+        }catch(IOException ioE){
+            console(ioE.getMessage(), InfoType.ERROR);
         }
     }
 
@@ -61,18 +48,13 @@ public class Logger implements Runnable{
      * @param c {@code Object} Class
      * */ 
     public Logger(Object c){
-        this.path=this.DEFAULT_PATH;
+        path=DEFAULT_PATH;
         setSource(c);
-        mkFile(getDate());
-    }
-
-    /**
-     * Creates the logger without creating a file
-     * @param c {@code Object} Class
-     * @param file -> {@code false}
-     */
-    public Logger(Object c, boolean file){
-        setSource(c);
+        if(!mkFile(getDate())){
+            return;
+        }
+        writer=createWriter();
+        logAndDefault("Log created " + fileOut.getName(), InfoType.INFO);
     }
 
     /**
@@ -83,6 +65,7 @@ public class Logger implements Runnable{
     public Logger(Object c, File f){
         setSource(c);
         this.fileOut=f;
+        writer=createWriter();
     }
 
     /**
@@ -92,25 +75,23 @@ public class Logger implements Runnable{
      * 
      * @throws IOException  If an I/O error occurred
      */
-    private void mkFile(String name){
-        String origin=this.source;
-        setSource(this);
+    private boolean mkFile(String name){
         try {
-            int i=1;
-            File output=new File(this.path+name+"-"+i+".log");
-            for(;!output.createNewFile();i++)output=new File(this.path+name+"-"+i+".log");
-            if(output!=null){
-                this.fileOut=output;
-                logAndDefault("Log created " + output.getName(), InfoType.INFO);
+            File output=new File(this.path+name+"-1.log");
+            for(int i=2;!output.createNewFile();i++){
+                output=new File(this.path+name+"-"+i+".log");
             }
-            this.source=origin;
-            return;
+            this.fileOut=output;
+            return true;
         }
         catch(IOException ioE){
+            String origin=this.source;
+            setSource(this);
+            //console("Cannot create file", InfoType.ERROR);
             console(ioE.getMessage(), InfoType.ERROR);
             this.fileOut=null;
             this.source=origin;
-            return;
+            return false;
         }
     }
 
@@ -143,10 +124,9 @@ public class Logger implements Runnable{
                 input="["+getTime()+"] ["+"Client"+"/"+type+"]: "+input;
             }
             
-            BufferedWriter writer=createWriter();
             writer.append(input);
             writer.newLine();
-            writer.close();
+            writer.flush();
         }
         catch(IOException ioE){
             String origin=this.source;
