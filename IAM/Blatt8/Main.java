@@ -14,5 +14,6 @@ public class Main {
 
         log.file("hi", InfoType.DEBUG);
         log.halt();
+        log.file("hi", InfoType.DEBUG);
     }
 }
