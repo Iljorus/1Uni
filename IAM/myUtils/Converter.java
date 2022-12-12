@@ -1,11 +1,11 @@
 package myUtils;
 
-public class Numbers {      //Mby rename
+public class Converter {      //Mby rename
     private final String NUMERALS="0123456789ABCDEF";
     /**
      * This class provides tools to convert numbers
      */
-    public Numbers(){
+    public Converter(){
     }
     private String toDecimal(String x, int s){
         int result=0;
