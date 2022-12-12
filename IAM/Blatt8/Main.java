@@ -3,8 +3,18 @@ package Blatt8;
 import myUtils.logger.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Logger log=new Logger(new Main(), false);
-        log.file("test", InfoType.INFO);
+    public volatile boolean test=true;
+    public static void main(String[] args){
+        Main m=new Main();
+        m.conc();
+    }
+    public void conc() {
+        Logger log=new Logger(this);
+        Thread loggerThread=new Thread(log, "Logger");
+        loggerThread.start();
+        log.setVar(this);
+
+        log.file("hi", InfoType.DEBUG);
+        test=false;
     }
 }

@@ -1,7 +1,11 @@
 package myUtils.logger;
 
-import java.time.LocalTime;
+import myUtils.userInput.*;
+import java.util.Scanner;
 
+import Blatt8.Main;
+
+import java.time.LocalTime;
 import java.time.LocalDate;
 
 import java.io.File;
@@ -13,11 +17,44 @@ import java.io.BufferedWriter;
 
 //TODO only write full class path when error. (Do it like MC logs)
 //If logging to console isn't needed anymore, rename methods to match InfoTypes
-public class Logger {
+//Multithreading - finished 1/4
+public class Logger implements Runnable{
     private final String DEFAULT_PATH="./logs/";
     private String path;
     private File fileOut;
     private String source;
+    private BufferedWriter writer;
+    private Main test;
+
+    //WORKS!! =D
+    public void run(){
+        UserInput userInput=new UserInput(new Scanner(System.in), this);
+        System.out.println("Running");
+        this.writer=createWriter();
+        String input="";
+        while(test.test){
+            System.out.print(test.test);
+            input=String.valueOf(userInput.get(InputType.String));
+            if(input.equalsIgnoreCase("exit")){
+                break;
+            }
+        }
+    }
+    
+    public void setVar(Main in){
+        test=in;
+    }
+
+    public void test(String input){
+        try{
+            writer.append(input);
+            writer.newLine();
+            writer.flush();     //Prints every "staged change" to file
+        }
+        catch(IOException ioE){
+            ioE.printStackTrace();
+        }
+    }
 
     /** 
      * Creates the logger with the default path {@code ./logs/}
@@ -151,7 +188,7 @@ public class Logger {
     /**
      * @param c {@code Object} Class
      */
-    public void setSource(Object c){
+    private void setSource(Object c){
         this.source=String.valueOf(c.getClass()).split(" ")[1];
     }
 
@@ -186,12 +223,5 @@ public class Logger {
      */
     private String getDate(){
         return LocalDate.now().toString();
-    }
-
-    /**
-     * @deprecated
-     */
-    public void reCreateLogger(){
-        mkFile(this.fileOut.getName());
     }
 }
