@@ -15,7 +15,7 @@ import java.io.BufferedWriter;
 //Not every log is a client log haha
 public class Logger implements Runnable{
     private final String DEFAULT_PATH="./logs/";
-    private String path;
+    private String path=DEFAULT_PATH;
     private File fileOut;
     private String source;
     private BufferedWriter writer;
@@ -47,7 +47,6 @@ public class Logger implements Runnable{
      * @param c {@code Object} Class
      * */ 
     public Logger(Object c){
-        path=DEFAULT_PATH;
         setSource(c);
         if(!mkFile(getDate())){
             return;
@@ -84,19 +83,18 @@ public class Logger implements Runnable{
             return true;
         }
         catch(IOException ioE){
-            String origin=this.source;
-            setSource(this);
-            //console("Cannot create file", InfoType.ERROR);
-            System.out.println(ioE.getMessage());
+            System.out.println("Cannot create file");
+            System.out.println("Stacktrace: "+ioE.getMessage());
             this.fileOut=null;
-            this.source=origin;
             return false;
         }
     }
 
     /** 
-     * Prints a {@code String} to the console
-     * @param input An input String
+     * Styles a {@code String}
+     * @param x {@code String}
+     * @param type {@code InfoType}
+     * @return {@code String}
      * */  
     public String style(String x, InfoType type){
         if(type.equals(InfoType.ERROR)){
@@ -115,18 +113,15 @@ public class Logger implements Runnable{
     public void file(Object x, InfoType type){
         try{
             String input=String.valueOf(x);
-            if(this.fileOut==null)throw new FileNotFoundException("Cannot log to file, path is empty");
+            if(this.fileOut==null)throw new FileNotFoundException("Cannot write to file, file is empty");
             input=style(input, type);
             
             writer.append(input);
             writer.newLine();
             writer.flush();
         }
-        catch(IOException ioE){
-            String origin=this.source;
-            setSource(this);
+        catch(IOException ioE){ 
             System.out.println(ioE.getMessage());
-            setSource(origin);
             return;
         }
     }
