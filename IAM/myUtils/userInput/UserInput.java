@@ -27,25 +27,37 @@ public class UserInput {
     public Object get(InputType type){
         while(true){
             String input=sc.nextLine();
-            log.file("Requested input as "+type+", Got: "+String.valueOf(input)+" as "+getInstance(input), InfoType.INFO);
             switch(type){
                 case String:{
+                    log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as String", InfoType.INFO);
                     return input;
                 }
 
                 case Integer:{
-                    if(input.matches(INTEGER))return Integer.valueOf(input);
+                    if(input.matches(INTEGER)){
+                        log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as Integer", InfoType.INFO);
+                        return Integer.valueOf(input);
+                    }
                     else break;
                 }
 
                 case Boolean:{
-                    if(input.equalsIgnoreCase("true") || input.equalsIgnoreCase("1"))return Boolean.TRUE;
-                    else if(input.equalsIgnoreCase("false") || input.equalsIgnoreCase("0"))return Boolean.FALSE;
+                    if(input.equalsIgnoreCase("true") || input.equalsIgnoreCase("1")){
+                        log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as Boolean", InfoType.INFO);
+                        return Boolean.TRUE;
+                    }
+                    else if(input.equalsIgnoreCase("false") || input.equalsIgnoreCase("0")){
+                        log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as Boolean", InfoType.INFO);
+                        return Boolean.FALSE;
+                    }
                     else break;
                 }
 
                 case Double:{
-                    if(input.matches(DOUBLE))return Double.valueOf(input);
+                    if(input.matches(DOUBLE)){
+                        log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as Double", InfoType.INFO);
+                        return Double.valueOf(input);
+                    }
                     else break;
                 }
 
@@ -53,6 +65,7 @@ public class UserInput {
                     return "ERROR";
                 }
             }
+            log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as "+getInstance(input), InfoType.INFO);
             print("Expected "+type+". Try again");
         }
     }
