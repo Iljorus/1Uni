@@ -11,9 +11,8 @@ import java.io.OutputStreamWriter;
 import java.io.BufferedWriter;
 
 //only write full class path when error. (Do it like MC logs)
-//If logging to console isn't needed anymore, rename methods to match InfoTypes
+//If logging to console isn't needed anymore, rename methods to match InfoTypes cringe
 //Not every log is a client log haha
-//Console method kinda unnecessary lol
 public class Logger implements Runnable{
     private final String DEFAULT_PATH="./logs/";
     private String path;
@@ -39,7 +38,7 @@ public class Logger implements Runnable{
         try{
             writer.close();
         }catch(IOException ioE){
-            console(ioE.getMessage(), InfoType.ERROR);
+            System.out.println(ioE.getMessage());
         }
     }
 
@@ -88,7 +87,7 @@ public class Logger implements Runnable{
             String origin=this.source;
             setSource(this);
             //console("Cannot create file", InfoType.ERROR);
-            console(ioE.getMessage(), InfoType.ERROR);
+            System.out.println(ioE.getMessage());
             this.fileOut=null;
             this.source=origin;
             return false;
@@ -99,14 +98,14 @@ public class Logger implements Runnable{
      * Prints a {@code String} to the console
      * @param input An input String
      * */  
-    public void console(String x, InfoType type){
+    public String style(String x, InfoType type){
         if(type.equals(InfoType.ERROR)){
             x="["+getTime()+"] ["+getSource()+"/"+type+"]: "+x;    
         }
         else {
             x="["+getTime()+"] ["+"Client"+"/"+type+"]: "+x;
         }
-        System.out.println(x);
+        return x;
     }
 
     /** 
@@ -117,12 +116,7 @@ public class Logger implements Runnable{
         try{
             String input=String.valueOf(x);
             if(this.fileOut==null)throw new FileNotFoundException("Cannot log to file, path is empty");
-            if(type.equals(InfoType.ERROR)){
-                input="["+getTime()+"] ["+getSource()+"/"+type+"]: "+input;
-            }
-            else{
-                input="["+getTime()+"] ["+"Client"+"/"+type+"]: "+input;
-            }
+            input=style(input, type);
             
             writer.append(input);
             writer.newLine();
@@ -131,19 +125,10 @@ public class Logger implements Runnable{
         catch(IOException ioE){
             String origin=this.source;
             setSource(this);
-            console(ioE.getMessage(), InfoType.ERROR);
+            System.out.println(ioE.getMessage());
             setSource(origin);
             return;
         }
-    }
-
-    /**
-     * Prints a {@code String} to both console and file
-     * @param x {@code String} input
-     */
-    public void log(String x, InfoType type){
-        console(x, type);
-        file(x, type);
     }
 
     /**
@@ -160,7 +145,7 @@ public class Logger implements Runnable{
             return new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileOut, true), "UTF-8"));
         }
         catch(IOException ioE){
-            console(ioE.getMessage(), InfoType.ERROR);
+            System.out.println(ioE.getMessage());
             return null;
         }
     }
