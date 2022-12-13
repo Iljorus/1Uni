@@ -11,7 +11,7 @@ import java.io.OutputStreamWriter;
 import java.io.BufferedWriter;
 
 //only write full class path when error. (Do it like MC logs)
-//If logging to console isn't needed anymore, rename methods to match InfoTypes cringe
+//Change the way you decide erros and infos and shit
 //Not every log is a client log haha
 public class Logger{
     private final String DEFAULT_PATH="./logs/";
@@ -21,7 +21,7 @@ public class Logger{
     private BufferedWriter writer;
 
     /**
-     * Stops the logger and closes the writer
+     * Closes writer
      */
     public void stop(){
         try{
@@ -33,8 +33,8 @@ public class Logger{
     }
 
     /** 
-     * Creates the logger with the default path {@code ./logs/}
-     * @param c {@code Object} Class
+     * Creates logger
+     * @param c {@code Object} Origin class
      * */ 
     public Logger(Object c){
         setSource(c);
