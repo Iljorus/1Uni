@@ -13,32 +13,22 @@ import java.io.BufferedWriter;
 //only write full class path when error. (Do it like MC logs)
 //If logging to console isn't needed anymore, rename methods to match InfoTypes cringe
 //Not every log is a client log haha
-public class Logger implements Runnable{
+public class Logger{
     private final String DEFAULT_PATH="./logs/";
     private String path=DEFAULT_PATH;
     private File fileOut;
     private String source;
     private BufferedWriter writer;
-    private volatile boolean running=true;
-
-    /**
-     * Starts the logger
-     */
-    public void run(){
-        System.out.println("Running");
-        while(running){
-        }
-    }
 
     /**
      * Stops the logger and closes the writer
      */
-    public void halt(){
-        running=false;
+    public void stop(){
         try{
             writer.close();
         }catch(IOException ioE){
-            System.out.println(ioE.getMessage());
+            System.out.println("Cannot close writer");
+            System.out.println("Stacktrace: "+ioE.getMessage());
         }
     }
 
@@ -120,8 +110,9 @@ public class Logger implements Runnable{
             writer.newLine();
             writer.flush();
         }
-        catch(IOException ioE){ 
-            System.out.println(ioE.getMessage());
+        catch(IOException ioE){
+            System.out.println("Cannot wirte to file");
+            System.out.println("Stacktrace: "+ioE.getMessage());
             return;
         }
     }
@@ -140,7 +131,7 @@ public class Logger implements Runnable{
             return new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileOut, true), "UTF-8"));
         }
         catch(IOException ioE){
-            System.out.println(ioE.getMessage());
+            System.out.println("Stacktrace: "+ioE.getMessage());
             return null;
         }
     }

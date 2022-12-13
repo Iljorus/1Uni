@@ -9,11 +9,8 @@ public class Main {
     }
     public void run() {
         Logger log=new Logger(this);
-        Thread loggerThread=new Thread(log, "Logger");
-        loggerThread.start();
 
         log.file("hi", InfoType.DEBUG);
-        log.halt();
-        log.file("hi", InfoType.DEBUG);
+        log.stop();
     }
 }
