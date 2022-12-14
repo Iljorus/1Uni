@@ -1,16 +1,25 @@
 package Blatt8;
 
-import myUtils.logger.*;
+import myUtils.time.*;
 
 public class Main {
     public static void main(String[] args){
-        Main m=new Main();
-        m.run();
-    }
-    public void run() {
-        Logger log=new Logger(this);
+        int offset=10;
+        if(args.length!=0){
+            offset=Integer.valueOf(args[0]);
+        }
+        Clock c=new Clock();
+        c.start();
+        Time current=c.fetchTime();
+        Time end=c.fetchTime();
+        end.add(0, 0, offset);
 
-        log.file("hi", InfoType.DEBUG);
-        log.stop();
+        while(true){
+            if(current.equals(end)){
+                break;
+            }
+            if(c.hasNewTime())current=c.getTime();
+        }
+        c.halt();
     }
 }
