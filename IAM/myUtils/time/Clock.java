@@ -3,16 +3,19 @@ package myUtils.time;
 import java.time.LocalTime;
 
 public class Clock extends Thread{
-    private volatile boolean running=true;
+    private volatile boolean running;
     private volatile Time time;
+
     public Clock(){
         time=fetchTime();
+        running=true;
     }
+
     public void run(){
         while(running){
             if(hasNewTime()){
                 time=fetchTime();
-                System.out.println(time.getHours()+":"+time.getMinutes()+":"+time.getSeconds());
+                System.out.println(""+time.getHours()+":"+time.getMinutes()+":"+time.getSeconds());
             }
         }
     }
@@ -22,14 +25,14 @@ public class Clock extends Thread{
     }
 
     public Time getTime(){
-        return time;
+        return new Time(this.time);
     }
 
-    public Time fetchTime(){
+    private Time fetchTime(){
         int h=LocalTime.now().getHour();
         int m=LocalTime.now().getMinute();
         int s=LocalTime.now().getSecond();
-        return new Time(Integer.valueOf(((h<10)? "0"+h:""+h)), Integer.valueOf(((m<10)? "0"+m:""+m)), Integer.valueOf(((s<10)? "0"+s:""+s)));
+        return new Time(h, m, s);
     }
 
     public boolean hasNewTime(){

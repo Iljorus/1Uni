@@ -11,21 +11,28 @@ public class Time {
         seconds=s;
     }
 
-    public void add(int h, int m, int s){
+    public Time(Time t){
+        hours=t.getHours();
+        minutes=t.getMinutes();
+        seconds=t.getSeconds();
+    }
+
+    public Time add(int h, int m, int s){
         seconds+=s;
-        if(seconds>60){
+        if(seconds>=60){
             seconds-=60;
             minutes++;
         }
         minutes+=m;
-        if(minutes>60){
+        if(minutes>=60){
             minutes-=60;
             hours++;
         }
         hours+=h;
-        if(hours>24){
+        if(hours>=24){
             hours-=24;
         }
+        return this;
     }
 
     @Override
