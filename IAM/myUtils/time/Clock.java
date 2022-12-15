@@ -9,13 +9,13 @@ public class Clock extends Thread{
     public Clock(){
         time=fetchTime();
         running=true;
+        start();
     }
 
     public void run(){
         while(running){
             if(hasNewTime()){
                 time=fetchTime();
-                System.out.println(""+time.getHours()+":"+time.getMinutes()+":"+time.getSeconds());
             }
         }
     }

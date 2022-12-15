@@ -1,23 +1,29 @@
 package myUtils.time;
 
+//import Bla
+
 public class Stopwatch extends Thread{
     private volatile boolean running;
-    private Time start;
     private Time end;
-    public transient int test;
+    private Clock clock;
 
-    public Stopwatch(Time t){
+    public Stopwatch(Time offset){
+        clock=new Clock();
+        end=clock.getTime().add(offset);
         running=true;
-        end=t;
+        start();
     }
 
     public void run(){
+        Time current=clock.getTime();
         while(running){
-
+            if(current.equals(end))halt();
+            current=clock.getTime();
         }
     }
 
     public void halt(){
         running=false;
+        clock.halt();
     }
 }

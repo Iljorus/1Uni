@@ -35,6 +35,11 @@ public class Time {
         return this;
     }
 
+    public Time add(Time t){
+        add(t.getHours(), t.getMinutes(), t.getSeconds());
+        return this;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -51,6 +56,14 @@ public class Time {
         if (seconds != other.seconds)
             return false;
         return true;
+    }
+
+    @Override
+    public String toString(){
+        return ((hours>10)?""+hours:"0"+hours)+":"+
+        ((minutes>10)?""+minutes:"0"+minutes)+":"+
+        ((seconds>10)?""+seconds:"0"+seconds);
+
     }
 
     public int getHours(){
