@@ -73,7 +73,7 @@ public class Logger{
             return true;
         }
         catch(IOException ioE){
-            System.out.println("Cannot create file");
+            System.out.println("Cannot create new file");
             System.out.println("Stacktrace: "+ioE.getMessage());
             this.fileOut=null;
             return false;
