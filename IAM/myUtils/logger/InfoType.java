@@ -6,4 +6,5 @@ public enum InfoType {
     INFO,
     DEBUG,
     TRACE;
+    
 }
