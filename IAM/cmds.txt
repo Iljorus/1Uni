@@ -1,2 +1,0 @@
-Add everything to "sources.txt": dir /s /B *.java > sources.txt (Every file *.java from every directory (execute in source head)gets added to file)
-Compile "sources.txt": javac @sources.txt	
