@@ -6,7 +6,12 @@ import myUtils.logger.*;
 
 public class UserInput {
     private final String INTEGER="(-?)[0-9]+";
+    private final String POSITIVE_INTEGER="[0-9]+";
+    private final String NEGATIVE_INTEGER="(-)[0-9]+";
     private final String DOUBLE="(-?)([0-9]+)(\\.[0-9]+)?";
+    private final String POSITIVE_DOUBLE="([0-9]+)(\\.[0-9]+)?";
+    private final String NEGATIE_DOUBLE="(-)([0-9]+)(\\.[0-9]+)?";
+    
     private Logger log;
     private Scanner sc;
 

@@ -4,5 +4,9 @@ public enum InputType {
     String,
     Integer,
     Boolean,
-    Double;
+    Double,
+    PositiveInteger,
+    NegativeInteger,
+    PositiveDouble,
+    NegativeDouble;
 }
