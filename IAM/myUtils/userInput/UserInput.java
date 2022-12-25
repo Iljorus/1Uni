@@ -41,6 +41,20 @@ public class UserInput {
                     }
                 }
 
+                case PositiveInteger:{
+                    if(input.matches(INTEGER) && Integer.valueOf(input)>=0){
+                        log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as Integer", InfoType.INFO);
+                        return Integer.valueOf(input);
+                    }
+                }
+
+                case NegativeInteger:{
+                    if(input.matches(INTEGER) && Integer.valueOf(input)<0){
+                        log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as Integer", InfoType.INFO);
+                        return Integer.valueOf(input);
+                    }
+                }
+
                 case Boolean:{
                     if(input.equalsIgnoreCase("true") || input.equalsIgnoreCase("1")){
                         log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as Boolean", InfoType.INFO);
@@ -54,6 +68,20 @@ public class UserInput {
 
                 case Double:{
                     if(input.matches(DOUBLE)){
+                        log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as Double", InfoType.INFO);
+                        return Double.valueOf(input);
+                    }
+                }
+
+                case PositiveDouble:{
+                    if(input.matches(DOUBLE) && Double.valueOf(input)>=0){
+                        log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as Double", InfoType.INFO);
+                        return Double.valueOf(input);
+                    }
+                }
+
+                case NegativeDouble:{
+                    if(input.matches(DOUBLE) && Double.valueOf(input)<0){
                         log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as Double", InfoType.INFO);
                         return Double.valueOf(input);
                     }
@@ -83,28 +111,72 @@ public class UserInput {
                 switch(types[i]){
 
                     case String:{
+                        log.file("Requested "+types[i]+", got: \""+String.valueOf(input)+"\" as String", InfoType.INFO);
                         return input;
                     }
-
+    
                     case Integer:{
-                        if(input.matches(INTEGER))return Integer.valueOf(input);
-                        else break;
+                        if(input.matches(INTEGER)){
+                            log.file("Requested "+types[i]+", got: \""+String.valueOf(input)+"\" as Integer", InfoType.INFO);
+                            return Integer.valueOf(input);
+                        }
                     }
-
+    
+                    case PositiveInteger:{
+                        if(input.matches(INTEGER) && Integer.valueOf(input)>=0){
+                            log.file("Requested "+types[i]+", got: \""+String.valueOf(input)+"\" as Integer", InfoType.INFO);
+                            return Integer.valueOf(input);
+                        }
+                    }
+    
+                    case NegativeInteger:{
+                        if(input.matches(INTEGER) && Integer.valueOf(input)<0){
+                            log.file("Requested "+types[i]+", got: \""+String.valueOf(input)+"\" as Integer", InfoType.INFO);
+                            return Integer.valueOf(input);
+                        }
+                    }
+    
                     case Boolean:{
-                        if(input.equalsIgnoreCase("true") || input.equalsIgnoreCase("1"))return Boolean.TRUE;
-                        else if(input.equalsIgnoreCase("false") || input.equalsIgnoreCase("0"))return Boolean.FALSE;
-                        else break;
+                        if(input.equalsIgnoreCase("true") || input.equalsIgnoreCase("1")){
+                            log.file("Requested "+types[i]+", got: \""+String.valueOf(input)+"\" as Boolean", InfoType.INFO);
+                            return Boolean.TRUE;
+                        }
+                        else if(input.equalsIgnoreCase("false") || input.equalsIgnoreCase("0")){
+                            log.file("Requested "+types[i]+", got: \""+String.valueOf(input)+"\" as Boolean", InfoType.INFO);
+                            return Boolean.FALSE;
+                        }
                     }
-
+    
                     case Double:{
-                        if(input.matches(DOUBLE))return Double.valueOf(input);
-                        else break;
+                        if(input.matches(DOUBLE)){
+                            log.file("Requested "+types[i]+", got: \""+String.valueOf(input)+"\" as Double", InfoType.INFO);
+                            return Double.valueOf(input);
+                        }
+                    }
+    
+                    case PositiveDouble:{
+                        if(input.matches(DOUBLE) && Double.valueOf(input)>=0){
+                            log.file("Requested "+types[i]+", got: \""+String.valueOf(input)+"\" as Double", InfoType.INFO);
+                            return Double.valueOf(input);
+                        }
+                    }
+    
+                    case NegativeDouble:{
+                        if(input.matches(DOUBLE) && Double.valueOf(input)<0){
+                            log.file("Requested "+types[i]+", got: \""+String.valueOf(input)+"\" as Double", InfoType.INFO);
+                            return Double.valueOf(input);
+                        }
+                    }
+    
+                    default:{
+                        log.file("Requested "+types[i]+", got: \""+String.valueOf(input)+"\" as String", InfoType.INFO);
+                        print("Expected "+listTypes(types)+". Try again");
+                        break;
                     }
                 }
 
                 if(i==types.length){
-                    System.out.println("maximal");
+                    System.out.println("maximal");  //TODO 
                 }
             }
         }
@@ -122,5 +194,14 @@ public class UserInput {
     }
     public String getInstance(Object obj){
         return String.valueOf(obj.getClass()).split(" ")[1].split("\\.")[2];
+    }
+
+    private String listTypes(InputType[] types){
+        String output="";
+        for(InputType type:types){
+            output+=type;
+        }
+
+        return output;
     }
 }
