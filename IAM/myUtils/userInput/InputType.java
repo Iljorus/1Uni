@@ -2,11 +2,13 @@ package myUtils.userInput;
 
 public enum InputType {
     String,
-    Integer,
     Boolean,
-    Double,
+
+    Integer,
     PositiveInteger,
     NegativeInteger,
+
+    Double,
     PositiveDouble,
     NegativeDouble;
 }
