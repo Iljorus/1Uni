@@ -23,7 +23,7 @@ public class Logger{
     /**
      * Closes writer
      */
-    public void stop(){
+    public void close(){
         try{
             writer.close();
         }catch(IOException ioE){
