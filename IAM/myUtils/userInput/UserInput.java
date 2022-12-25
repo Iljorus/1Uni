@@ -43,7 +43,6 @@ public class UserInput {
                         log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as Integer", InfoType.INFO);
                         return Integer.valueOf(input);
                     }
-                    else break;
                 }
 
                 case Boolean:{
@@ -55,7 +54,6 @@ public class UserInput {
                         log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as Boolean", InfoType.INFO);
                         return Boolean.FALSE;
                     }
-                    else break;
                 }
 
                 case Double:{
@@ -63,15 +61,15 @@ public class UserInput {
                         log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as Double", InfoType.INFO);
                         return Double.valueOf(input);
                     }
-                    else break;
                 }
 
                 default:{
-                    return "ERROR";
+                    log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as String", InfoType.INFO);
+                    print("Expected "+type+". Try again");
+                    break;
                 }
             }
-            log.file("Requested "+type+", got: \""+String.valueOf(input)+"\" as "+getInstance(input), InfoType.INFO);
-            print("Expected "+type+". Try again");
+            
         }
     }
 

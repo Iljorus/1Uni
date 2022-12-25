@@ -1,11 +1,11 @@
 package Blatt9;
 
-public class Sortieren {
+public class Sort {
     
-    public Sortieren(){
+    public Sort(){
     }
 
-    public static int[] sort(int[] x){
+    public static int[] bubble(int[] x){
         int[] result=x;
         int changes=-1;
         while(changes!=0){

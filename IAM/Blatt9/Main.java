@@ -18,7 +18,7 @@ public class Main {
             blumentoepfe[i]=(Integer)userInput.print("Groessee des "+(i+1)+"-ten Blumentopf eingeben").get(InputType.Integer);
         }
         System.out.println(Styling.arrayToString(blumentoepfe));
-        int[] result=Sortieren.sort(blumentoepfe);
+        int[] result=Sort.bubble(blumentoepfe);
         System.out.println(Styling.arrayToString(result));
     }
 }
