@@ -24,9 +24,9 @@ public class Main {
                 blumentoepfe[i]=(Integer)userInput.print("Groessee des "+(i+1)+"-ten Blumentopf eingeben").get(InputType.Integer);
             }
         }
-        System.out.println(Styling.arrayToString(blumentoepfe));
+        System.out.println("\nUrspruengliches Array\n"+Styling.arrayToString(blumentoepfe));
         int[] result=Sort.bubble(blumentoepfe);
-        System.out.println(Styling.arrayToString(result));
+        System.out.println("\nSortiertes Array\n"+Styling.arrayToString(result));
     }
 
     public static int[] fill(int length, int range){
